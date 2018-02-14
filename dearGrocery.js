@@ -91,21 +91,23 @@ var inventory = {
   }
 };
 
-console.log(Object.keys(inventory['meat']));
-
 document.addEventListener('DOMContentLoaded', function() {
   console.log("we have started");
   started();
 });
 
-function started() {
+function started(event) {
+console.log("loaded");
+
 document.getElementById('myForm').addEventListener('submit', function(event) {
 event.preventDefault()
+
 
 var input = document.getElementById('name')
 setName(input.value)
 renderName()
 createMap()
+
 })
 }
 
@@ -118,7 +120,7 @@ function renderName() {
   var user = document.getElementById("user")
   user.innerHTML = username
 }
-var divpixel;
+
 
 function createMap () {
   var insertionPoint = document.getElementsByClassName("main-container")[0]
@@ -132,10 +134,17 @@ function createMap () {
   for (var i = 0; i < 900; i++) {
     setTimeout(function() {
       // could be its own function called createSinglePixel
-      var div = document.createElement("div");
-      div.classList.add("divpixels");
-      // div.addEventListener("click", changeColor);
-      map.append(div);
+      var divpixel = document.createElement("div");
+      divpixel.classList.add("divpixels");
+      divpixel.classList.add("popup")
+      divpixel.addEventListener("click", popupWindow)
+      divpixel.innerHTML = "<img src=\"pulse.gif\" width=\"100px\" height=\"100px\">"
+      let popupDiv = document.createElement("div")
+      popupDiv.innerHTML = "Hey"
+      popupDiv.classList.add("popuptext")
+      popupDiv.id = "myPopup"
+      divpixel.appendChild(popupDiv)
+      map.append(divpixel);
     }, 2  * i) }
 
   setTimeout (fillMap, 2000);
@@ -167,8 +176,17 @@ setTimeout (fillText, 500)
 
 let fillText = function (event) {
   let textbox = document.getElementsByClassName("divpixels")[97]
-  textbox.innerHTML = '1B'
+  textbox.innerHTML = "1B"
+
+
 
   textbox = document.getElementsByClassName("divpixels")[577]
   textbox.innerHTML = '1A'
+}
+
+let popupWindow = function (event) {
+  console.log("clicked");
+  //trying event.target here not working to select clicked div.
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
 }
