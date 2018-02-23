@@ -2,7 +2,7 @@
 var inventory = {
   'eggs': {
     'dozen': ['1A:A', '4.99', 4],
-    'six': ['1A:A', '2.69', 4],
+    'half-dozen': ['1A:A', '2.69', 4],
     'eighteen': ['1A:A', '6.99', 2]
   },
 
@@ -97,18 +97,29 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function started(event) {
-console.log("loaded");
+  // var divpixel = document.createElement("div");
+  // divpixel.classList.add("divpixels");
+  // divpixel.classList.add("popup")
+  // divpixel.addEventListener("click", popupWindow)
+  // divpixel.innerHTML = "<img src=\"pulse.gif\" width=\"100px\" height=\"100px\">"
+  // let popupDiv = document.createElement("div")
+  // popupDiv.innerHTML = "Hey"
+  // popupDiv.classList.add("popuptext")
+  // //popupDiv.id = "myPopup"
+  // divpixel.appendChild(popupDiv)
+  // let testdiv = document.getElementById("testdiv")
+  // testdiv.append(divpixel)
 
-document.getElementById('myForm').addEventListener('submit', function(event) {
-event.preventDefault()
+  console.log("loaded");
 
-
-var input = document.getElementById('name')
-setName(input.value)
-renderName()
-createMap()
-
-})
+  // document.getElementById('myForm').addEventListener('submit', function(event) {
+  //   event.preventDefault()
+  //
+  //   var input = document.getElementById('name')
+  //   setName(input.value)
+  //   renderName()
+    myList()
+  // })
 }
 
 function setName(name) {
@@ -121,8 +132,67 @@ function renderName() {
   user.innerHTML = username
 }
 
+function myList() {
+  var insertionPoint = document.getElementsByClassName("main-container")[0]
+  var form = document.getElementById("myForm")
+  insertionPoint.removeChild(form)
+  document.querySelector("#title").innerHTML = "Add your shopping list"
+  var div = document.createElement("div")
+  div.classList.add("col")
+  var listForm = document.createElement("form")
+  var newInput = document.createElement('input');
+  var label = document.createElement('label')
+  var submit = document.createElement('button')
+  submit.type = "submit"
+  submit.textContent = "Submit"
+  submit.classList.add("btn-primary")
+  submit.addEventListener("click", searchInventory)
+  label.innerHTML = "Search items "
+  newInput.setAttribute('name', 'search');
+  newInput.id = "search"
+  listForm.classList.add("list")
+  listForm.appendChild(label)
+  listForm.appendChild(newInput)
+  listForm.appendChild(submit)
+  div.appendChild(listForm)
+  insertionPoint.appendChild(div)
+  document.querySelector('.list').addEventListener('submit', function(event) {
+    event.preventDefault()
+  })
+}
 
-function createMap () {
+var groceryReturn = [];
+var grocerySearch;
+
+function searchInventory() {
+  grocerySearch = document.querySelector("#search").value
+  groceryReturn = Object.keys(inventory[grocerySearch])
+  groceryReturn = options(groceryReturn)
+  console.log(groceryReturn)
+  groceryReturn.id = "options"
+  var insertionPoint = document.querySelector(".main-container")
+  // var optionsList = document.querySelector("#options")
+  // if (options !== null) {
+  //   insertionPoint.removeChild()
+  // }
+  insertionPoint.append(groceryReturn);
+}
+
+function options() {
+var buttonDiv = document.createElement("div")
+  for (var i = 0; i < groceryReturn.length; i++) {
+    var div = document.createElement("div")
+    div.classList.add("col")
+    choiceButton = document.createElement("button")
+    choiceButton.classList.add("btn-primary")
+    choiceButton.innerHTML = groceryReturn[i]
+    div.append(choiceButton)
+    buttonDiv.append(div)
+  }
+  return buttonDiv
+}
+
+function createMap() {
   var insertionPoint = document.getElementsByClassName("main-container")[0]
   var form = document.getElementById("myForm")
   insertionPoint.removeChild(form)
@@ -138,55 +208,58 @@ function createMap () {
       divpixel.classList.add("divpixels");
       divpixel.classList.add("popup")
       divpixel.addEventListener("click", popupWindow)
-      divpixel.innerHTML = "<img src=\"pulse.gif\" width=\"100px\" height=\"100px\">"
+      // divpixel.innerHTML = "<img src=\"pulse.gif\" width=\"100px\" height=\"100px\">"
       let popupDiv = document.createElement("div")
       popupDiv.innerHTML = "Hey"
       popupDiv.classList.add("popuptext")
-      popupDiv.id = "myPopup"
+      //popupDiv.id = "myPopup"
       divpixel.appendChild(popupDiv)
       map.append(divpixel);
-    }, 2  * i) }
+    }, 2 * i)
+  }
 
-  setTimeout (fillMap, 2000);
-}
-
-let fillMap = function (event) {
-
-  for (var i = 66; i < 607; i+=30) {
-      for (var j = 0; j < 3; j++) {
-        var divpixel = document.getElementsByClassName("divpixels")[i + j];
-        divpixel.style.backgroundColor = "pink"
-        divpixel.style.borderColor = "pink"
-}
-}
-setTimeout (fillMap2, 700)
+  setTimeout(fillMap, 2000);
 }
 
-let fillMap2 = function (event) {
+let fillMap = function(event) {
 
-  for (var i = 24; i < 607; i+=30) {
-      for (var j = 0; j < 3; j++) {
-        var divpixel = document.getElementsByClassName("divpixels")[i + j];
-        divpixel.style.backgroundColor = "purple"
-        divpixel.style.borderColor = "purple"
-}
-}
-setTimeout (fillText, 500)
+  for (var i = 66; i < 607; i += 30) {
+    for (var j = 0; j < 3; j++) {
+      var divpixel = document.getElementsByClassName("divpixels")[i + j];
+      divpixel.style.backgroundColor = "pink"
+      divpixel.style.borderColor = "pink"
+    }
+  }
+  setTimeout(fillMap2, 700)
 }
 
-let fillText = function (event) {
+let fillMap2 = function(event) {
+
+  for (var i = 24; i < 607; i += 30) {
+    for (var j = 0; j < 3; j++) {
+      var divpixel = document.getElementsByClassName("divpixels")[i + j];
+      divpixel.style.backgroundColor = "purple"
+      divpixel.style.borderColor = "purple"
+    }
+  }
+  setTimeout(fillText, 500);
+}
+
+let fillText = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[97]
   textbox.innerHTML = "1B"
-
-
 
   textbox = document.getElementsByClassName("divpixels")[577]
   textbox.innerHTML = '1A'
 }
 
-let popupWindow = function (event) {
+let popupWindow = function(event) {
   console.log("clicked");
-  //trying event.target here not working to select clicked div.
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
+  var divpixel = document.querySelectorAll(".show")
+  if (divpixel[0] !== undefined) {
+    divpixel[0].classList.remove("show")
+  }
+
+
+  event.target.childNodes[0].classList.toggle("show")
 }
