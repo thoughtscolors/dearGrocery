@@ -38,21 +38,29 @@ body {
 .main-container {
   /* background-color: red; */
   display: flex;
-  vertical-align: middle;
+  /* align-items: center; */
+  /* vertical-align: middle; */
   text-align: center;
   width: auto;
   height: auto;
   /* border: 2px solid grey; */
+  max-width: 90%;
   margin: auto;
   /* margin-top: 10%; */
   /* margin-bottom */
   padding: 2%;
   /* display: inline-block; */
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap:nowrap;
 }
 
 .col {
   flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+  width: 50%;
 }
 
 .btn-primary {
@@ -78,13 +86,31 @@ button:hover {
 }
 
 .button-div {
-  font-size: 1.2em;
+  /* border: 1px solid grey; */
+  width: 25%;
+  /* height: 300px; */
+  /* font-size: 1.2em; */
 }
 
 
 input {
   border-radius: 5px;
-  font-size: 1.2em
+  font-size: 1.2em;
+  /* max-width: 1.2em; */
+}
+
+.quantity {
+  max-width: 2em;
+}
+
+.myList {
+  width: 25%;
+  /* height: 300px; */
+  text-align: left;
+  display: absolute;
+  position: 0,0;
+  float: left;
+  /* border: 1px solid grey; */
 }
 
 #map {

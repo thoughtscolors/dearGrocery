@@ -1,93 +1,93 @@
-//index 0 is aisle:shelf, 1 is price, 2 is quantity
+//index 0 is aisle, 1 is price, 2 is quantity
 var inventory = {
   'eggs': {
-    'dozen': ['1A:A', '4.99', 4],
-    'half-dozen': ['1A:A', '2.69', 4],
-    'eighteen': ['1A:A', '6.99', 2]
+    'dozen': ['1A', '4.99', 4],
+    'half-dozen': ['1A', '2.69', 4],
+    'eighteen': ['1A', '6.99', 2]
   },
 
   'milk': {
-    'gallon': ['1A:B', '2.99', 5],
-    'half': ['1A:B', '1.59', 5],
-    'pint': ['1A:B', '.79', 5]
+    'gallon': ['1B', '2.99', 5],
+    'half': ['1B', '1.59', 5],
+    'pint': ['1B', '.79', 5]
   },
 
   'cheese': {
-    'cheddar': ['2A:A', '2.99', 10],
-    'swiss': ['2A:A', '2.99', 10],
-    'brie': ['2A:A', '2.99', 10],
-    'blue': ['2A:A', '2.99', 10],
-    'parmesan': ['2A:A', '2.99', 10]
+    'cheddar': ['2A', '2.99', 10],
+    'swiss': ['2A', '2.99', 10],
+    'brie': ['2A', '2.99', 10],
+    'blue': ['2A', '2.99', 10],
+    'parmesan': ['2A', '2.99', 10]
   },
 
   'bread': {
-    'wheat': ['2A:B', '3.49', 7],
-    'white': ['2A:B', '3.49', 7],
-    'french': ['2A:B', '3.49', 7],
-    'sourdough': ['2A:B', '3.49', 7]
+    'wheat': ['2B', '3.49', 7],
+    'white': ['2B', '3.49', 7],
+    'french': ['2B', '3.49', 7],
+    'sourdough': ['2B', '3.49', 7]
   },
 
   'meat': {
-    'steak': ['2B:A', '7.99', 4],
-    'lambchop': ['2B:A', '7.99', 4],
-    'porkchop': ['2B:A', '7.99', 4],
-    'sausage': ['2B:A', '7.99', 4],
-    'bacon': ['2B:A', '7.99', 4],
-    'chicken': ['2B:A', '7.99', 4]
+    'steak': ['2C', '7.99', 4],
+    'lambchop': ['2C', '7.99', 4],
+    'porkchop': ['2C', '7.99', 4],
+    'sausage': ['2C', '7.99', 4],
+    'bacon': ['2C', '7.99', 4],
+    'chicken': ['2C', '7.99', 4]
   },
 
   'seafood': {
-    'salmon': ['2B:B', '14.99', 4],
-    'halibut': ['2B:B', '12.99', 4],
-    'shrimp': ['2B:B', '7.99', 4],
-    'oyster': ['2B:B', '7.99', 4],
+    'salmon': ['2D', '14.99', 4],
+    'halibut': ['2D', '12.99', 4],
+    'shrimp': ['2D', '7.99', 4],
+    'oyster': ['2D', '7.99', 4],
   },
 
   'vegetables': {
-    'carrot': ['3A:A', '2.79', 5],
-    'tomato': ['3A:A', '2.79', 5],
-    'broccoli': ['3A:A', '2.79', 5],
-    'kale': ['3A:A', '2.79', 5],
-    'potato': ['3A:A', '2.79', 5],
-    'spinach': ['3A:A', '2.79', 5],
-    'mushroom': ['3A:A', '2.79', 5]
+    'carrot': ['3A', '2.79', 5],
+    'tomato': ['3A', '2.79', 5],
+    'broccoli': ['3A', '2.79', 5],
+    'kale': ['3A', '2.79', 5],
+    'potato': ['3A', '2.79', 5],
+    'spinach': ['3A', '2.79', 5],
+    'mushroom': ['3A', '2.79', 5]
   },
 
   'fruits': {
-    'apple': ['3A:B', '1.49', 5],
-    'orange': ['3A:B', '1.49', 5],
-    'banana': ['3A:B', '1.49', 5],
-    'lemon': ['3A:B', '1.49', 5],
-    'lime': ['3A:B', '1.49', 5],
-    'strawberry': ['3A:B', '1.49', 5],
-    'raspberry': ['3A:B', '1.49', 5],
-    'blueberry': ['3A:B', '1.49', 5]
+    'apple': ['3B', '1.49', 5],
+    'orange': ['3B', '1.49', 5],
+    'banana': ['3B', '1.49', 5],
+    'lemon': ['3B', '1.49', 5],
+    'lime': ['3B', '1.49', 5],
+    'strawberry': ['3B', '1.49', 5],
+    'raspberry': ['3B', '1.49', 5],
+    'blueberry': ['3B', '1.49', 5]
   },
 
   'herbs': {
-    'oregano': ['3A:C', '1.09', 0],
-    'thyme': ['3A:C', '1.09', 0],
-    'sage': ['3A:C', '1.09', 0],
-    'cilantro': ['3A:C', '1.09', 0],
-    'dill': ['3A:C', '1.09', 0],
-    'parsley': ['3A:C', '1.09', 0]
+    'oregano': ['3C', '1.09', 0],
+    'thyme': ['3C', '1.09', 0],
+    'sage': ['3C', '1.09', 0],
+    'cilantro': ['3C', '1.09', 0],
+    'dill': ['3C', '1.09', 0],
+    'parsley': ['3C', '1.09', 0]
   },
 
   'bulk': {
-    'granola': ['4A:A', '.49', 25],
-    'beans': ['4A:A', '.49', 25],
-    'snackeroos': ['4A:A', '.49', 25],
-    'rice': ['4A:A', '.49', 25],
-    'chocolate chips': ['4A:A', '.49', 25]
+    'granola': ['4A', '.49', 25],
+    'beans': ['4A', '.49', 25],
+    'snackeroos': ['4A', '.49', 25],
+    'rice': ['4A', '.49', 25],
+    'chocolate chips': ['4A', '.49', 25]
   },
 
   'candy': {
-    'dark chocolate': ['4A:B', '3.99', 17],
-    'milk chocolate': ['4A:B', '3.99', 17],
-    'swedish fish': ['4A:B', '3.99', 17],
-    'gummie bears': ['4A:B', '3.99', 17],
-    'decadence decadence': ['4A:B', '3.99', 17],
-    'kinder bueno': ['4A:B', '3.99', 17]
+    'dark chocolate': ['4B', '3.99', 17],
+    'milk chocolate': ['4B', '3.99', 17],
+    'swedish fish': ['4B', '3.99', 17],
+    'gummie bears': ['4B', '3.99', 17],
+    'decadence decadence': ['4B', '3.99', 17],
+    'kinder bueno': ['4B', '3.99', 17]
   }
 };
 
@@ -97,6 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function started(event) {
+  $(document).ready(function() {
+    $("input").attr("autocomplete", "off");
+  });
   // var divpixel = document.createElement("div");
   // divpixel.classList.add("divpixels");
   // divpixel.classList.add("popup")
@@ -118,7 +121,7 @@ function started(event) {
   //   var input = document.getElementById('name')
   //   setName(input.value)
   //   renderName()
-    myList()
+  myList()
   // })
 }
 
@@ -133,10 +136,13 @@ function renderName() {
 }
 
 function myList() {
+
   var insertionPoint = document.getElementsByClassName("main-container")[0]
+  var container = document.createElement("div")
+  container.classList.add("row")
   var form = document.getElementById("myForm")
   insertionPoint.removeChild(form)
-  document.querySelector("#title").innerHTML = "Add your shopping list"
+  document.querySelector("#title").innerHTML = "Add to your shopping list"
   var div = document.createElement("div")
   div.classList.add("col")
   var listForm = document.createElement("form")
@@ -144,7 +150,7 @@ function myList() {
   var label = document.createElement('label')
   var submit = document.createElement('button')
   submit.type = "submit"
-  submit.textContent = "Submit"
+  submit.textContent = "Go"
   submit.classList.add("btn-primary")
   submit.addEventListener("click", searchInventory)
   label.innerHTML = "Search items "
@@ -155,41 +161,160 @@ function myList() {
   listForm.appendChild(newInput)
   listForm.appendChild(submit)
   div.appendChild(listForm)
-  insertionPoint.appendChild(div)
+  container.appendChild(div)
+  insertionPoint.appendChild(container)
   document.querySelector('.list').addEventListener('submit', function(event) {
     event.preventDefault()
   })
+  addListDiv()
+  // browseDiv()
+}
+
+// function browseDiv() {
+//   var insertionPoint = document.querySelector(".main-container")
+//   var buttonDiv = document.createElement("div")
+//   buttonDiv.classList.add("button-div")
+//   var categories = Object.keys(inventory)
+//   console.log(categories);
+//   for (var i = 0; i < categories.length; i++) {
+//     var div = document.createElement("div")
+//     div.classList.add("col")
+//     choiceButton = document.createElement("button")
+//     choiceButton.classList.add("btn-primary")
+//     choiceButton.addEventListener("click", quantityForm)
+//     choiceButton.innerHTML = categories[i]
+//     div.append(choiceButton)
+//     buttonDiv.append(div)
+//   }
+//   insertionPoint.append(buttonDiv)
+// }
+
+function addListDiv() {
+  var insertionPoint = document.getElementsByClassName("main-container")[0]
+  var div = document.createElement("div")
+  console.log(div, insertionPoint)
+  div.classList.add("myList")
+  div.innerHTML = "My List"
+  insertionPoint.prepend(div)
 }
 
 var groceryReturn = [];
 var grocerySearch;
 
 function searchInventory() {
+  var currentSearch = document.querySelector(".button-div")
+  if (currentSearch !== null) {
+    console.log("if statement");
+    console.log(currentSearch.parentNode.removeChild(currentSearch))
+  }
   grocerySearch = document.querySelector("#search").value
-  groceryReturn = Object.keys(inventory[grocerySearch])
-  groceryReturn = options(groceryReturn)
-  console.log(groceryReturn)
-  groceryReturn.id = "options"
   var insertionPoint = document.querySelector(".main-container")
-  // var optionsList = document.querySelector("#options")
-  // if (options !== null) {
-  //   insertionPoint.removeChild()
-  // }
-  insertionPoint.append(groceryReturn);
+  if (inventory[grocerySearch] === undefined) {
+    var buttonDiv = document.createElement("div")
+    buttonDiv.classList.add("button-div")
+    buttonDiv.innerHTML = "Try Again"
+    insertionPoint.append(buttonDiv)
+  } else {
+    groceryReturn = Object.keys(inventory[grocerySearch])
+    groceryReturn = options(groceryReturn)
+    console.log(groceryReturn)
+    groceryReturn.id = "options"
+
+    // var optionsList = document.querySelector("#options")
+    // if (options !== null) {
+    //   insertionPoint.removeChild()
+    // }
+    insertionPoint.append(groceryReturn);
+  }
 }
 
 function options() {
-var buttonDiv = document.createElement("div")
+  var buttonDiv = document.createElement("div")
+  buttonDiv.classList.add("button-div")
   for (var i = 0; i < groceryReturn.length; i++) {
     var div = document.createElement("div")
     div.classList.add("col")
     choiceButton = document.createElement("button")
     choiceButton.classList.add("btn-primary")
+    choiceButton.addEventListener("click", quantityForm)
     choiceButton.innerHTML = groceryReturn[i]
     div.append(choiceButton)
     buttonDiv.append(div)
   }
   return buttonDiv
+}
+
+var choice;
+// var ite  m;
+
+function quantityForm() {
+  item = document.querySelector("#search").value
+  choice = event.target.innerHTML
+  var insertionPoint = event.target.parentNode
+  var aisle = inventory[item][choice][0]
+  var price = Number(inventory[item][choice][1])
+  var qtyForm = document.createElement("form")
+  var newInput = document.createElement('input');
+  var label = document.createElement('label')
+  var submit = document.createElement('button')
+  var div = document.createElement("div")
+  submit.type = "submit"
+  submit.textContent = "Add"
+  submit.classList.add("btn-primary")
+  submit.addEventListener("click", addToMyList)
+  label.innerHTML = "Quantity "
+  newInput.setAttribute('type', 'number');
+  newInput.classList.add('quantity')
+  qtyForm.classList.add("list")
+  qtyForm.appendChild(label)
+  qtyForm.appendChild(newInput)
+  qtyForm.appendChild(submit)
+  div.appendChild(qtyForm)
+  insertionPoint.appendChild(div)
+  console.log(item, choice, aisle, price);
+
+  // JSON.parse(localStorage.getItem("eggs"))
+
+  // var addListDiv = function () {
+  //   var insertionPoint = document.querySelector("body")
+  //   var div = document.createElement("div")
+  //   console.log(div, insertionPoint)
+  //   div.classList.add("myList")
+  //   div.innerHTML = "My List"
+  //
+  //   insertionPoint.appendChild(div)
+  // }
+}
+
+
+
+function addToMyList(event) {
+  event.preventDefault()
+  var item = document.querySelector("#search").value
+  var quantity = document.querySelector(".quantity").value
+
+  if (localStorage.getItem(item)) {
+
+  }
+  localStorage.setItem(item, JSON.stringify([choice, quantity]))
+
+
+  var insertionPoint = document.querySelector(".myList")
+  var item = document.querySelector("#search").value
+  var ul = document.createElement("ul")
+  var li = document.createElement("li")
+  console.log("addToLocalStorage>>", item, insertionPoint);
+  li.innerHTML = choice + " - " + quantity
+  ul.appendChild(li)
+  insertionPoint.appendChild(ul)
+
+  clearForm()
+}
+
+function clearForm() {
+  var insertionPoint = document.getElementById("options")
+  insertionPoint.innerHTML = ""
+  document.getElementById("search").value = ""
 }
 
 function createMap() {
