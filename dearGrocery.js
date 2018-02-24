@@ -401,41 +401,52 @@ let fillMap4 = function(event) {
 
 let fillText1 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[99]
-  textbox.innerHTML = "1B"
+  textbox.append("1B")
+  textbox.id = "1B"
 
   textbox = document.getElementsByClassName("divpixels")[579]
-  textbox.innerHTML = '1A'
+  textbox.append("1A")
+  textbox.id = "1A"
   setTimeout(fillText2, 500)
 }
 
 let fillText2 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[152]
-  textbox.innerHTML = "2A"
+  textbox.append("2A")
+  textbox.id = "2A"
   textbox = document.getElementsByClassName("divpixels")[332]
-  textbox.innerHTML = '2B'
+  textbox.append('2B')
+  textbox.id = "2B"
   textbox = document.getElementsByClassName("divpixels")[512]
-  textbox.innerHTML = '2C'
+  textbox.append('2C')
+  textbox.id = "2C"
   textbox = document.getElementsByClassName("divpixels")[692]
-  textbox.innerHTML = '2D'
+  textbox.append('2D')
+  textbox.id = "2D"
   setTimeout(fillText3, 500)
 }
 
 let fillText3 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[115]
-  textbox.innerHTML = "3A"
+  textbox.append("3A")
+  textbox.id = "3A"
   textbox = document.getElementsByClassName("divpixels")[385]
-  textbox.innerHTML = '3B'
+  textbox.append('3B')
+  textbox.id = "3B"
   textbox = document.getElementsByClassName("divpixels")[715]
-  textbox.innerHTML = '3C'
+  textbox.append('3C')
+  textbox.id = "3C"
 
   setTimeout(fillText4, 500)
 }
 
 let fillText4 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[107]
-  textbox.innerHTML = "4A"
+  textbox.append("4A")
+  textbox.id = "4A"
   textbox = document.getElementsByClassName("divpixels")[557]
-  textbox.innerHTML = '4B'
+  textbox.append('4B')
+  textbox.id = "4B"
 }
 
 let popupWindow = function(event) {
