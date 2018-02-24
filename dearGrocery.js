@@ -336,13 +336,9 @@ function createMap() {
       var divpixel = document.createElement("div");
       divpixel.classList.add("divpixels");
       divpixel.classList.add("popup")
-      divpixel.addEventListener("click", popupWindow)
+
       // divpixel.innerHTML = "<img src=\"pulse.gif\" width=\"100px\" height=\"100px\">"
-      let popupDiv = document.createElement("div")
-      popupDiv.innerHTML = "Hey"
-      popupDiv.classList.add("popuptext")
-      //popupDiv.id = "myPopup"
-      divpixel.appendChild(popupDiv)
+
       map.append(divpixel);
     }, 2 * i)
   }
@@ -403,10 +399,29 @@ let fillText1 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[99]
   textbox.append("1B")
   textbox.id = "1B"
+  // textbox.addEventListener("click", popupWindow)
+
+  let itemLocation = document.getElementsByClassName("divpixels")[101]
+  itemLocation.addEventListener("mouseover", popupWindow)
+  itemLocation.addEventListener("mouseleave", closeWindow)
+  let imgDiv = document.createElement("div")
+  let image = document.createElement('img')
+  let popupDiv = document.createElement("div")
+  popupDiv.innerHTML = "Hey"
+  popupDiv.classList.add("popuptext")
+  //popupDiv.id = "myPopup"
+  itemLocation.appendChild(popupDiv)
+  image.setAttribute("src", "pulse.gif")
+  imgDiv.append(image)
+  itemLocation.appendChild(imgDiv)
+
+
 
   textbox = document.getElementsByClassName("divpixels")[579]
   textbox.append("1A")
   textbox.id = "1A"
+  // textbox.addEventListener("click", popupWindow)
+
   setTimeout(fillText2, 500)
 }
 
@@ -414,15 +429,23 @@ let fillText2 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[152]
   textbox.append("2A")
   textbox.id = "2A"
+  // textbox.addEventListener("click", popupWindow)
+
   textbox = document.getElementsByClassName("divpixels")[332]
   textbox.append('2B')
   textbox.id = "2B"
+  // textbox.addEventListener("click", popupWindow)
+
   textbox = document.getElementsByClassName("divpixels")[512]
   textbox.append('2C')
   textbox.id = "2C"
+  // textbox.addEventListener("click", popupWindow)
+
   textbox = document.getElementsByClassName("divpixels")[692]
   textbox.append('2D')
   textbox.id = "2D"
+  // textbox.addEventListener("click", popupWindow)
+
   setTimeout(fillText3, 500)
 }
 
@@ -430,12 +453,17 @@ let fillText3 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[115]
   textbox.append("3A")
   textbox.id = "3A"
+  // textbox.addEventListener("click", popupWindow)
+
   textbox = document.getElementsByClassName("divpixels")[385]
   textbox.append('3B')
   textbox.id = "3B"
+  // textbox.addEventListener("click", popupWindow)
+
   textbox = document.getElementsByClassName("divpixels")[715]
   textbox.append('3C')
   textbox.id = "3C"
+  // textbox.addEventListener("click", popupWindow)
 
   setTimeout(fillText4, 500)
 }
@@ -444,18 +472,21 @@ let fillText4 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[107]
   textbox.append("4A")
   textbox.id = "4A"
+  // textbox.addEventListener("click", popupWindow)
+
   textbox = document.getElementsByClassName("divpixels")[557]
   textbox.append('4B')
   textbox.id = "4B"
+  // textbox.addEventListener("click", popupWindow)
+}
+
+let closeWindow = function (event) {
+  console.log("mouseleave");
+  event.currentTarget.childNodes[0].classList.remove("show")
 }
 
 let popupWindow = function(event) {
-  console.log("clicked");
-  var divpixel = document.querySelectorAll(".show")
-  if (divpixel[0] !== undefined) {
-    divpixel[0].classList.remove("show")
-  }
+  console.log("mouseenter")
 
-
-  event.target.childNodes[0].classList.toggle("show")
+  event.currentTarget.childNodes[0].classList.add("show")
 }
