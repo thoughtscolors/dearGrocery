@@ -37,7 +37,7 @@ body {
 
 .main-container {
   /* background-color: red; */
-  display: flex;
+  display: block;
   /* align-items: center; */
   /* vertical-align: middle; */
   text-align: center;
@@ -48,7 +48,7 @@ body {
   margin: auto;
   /* margin-top: 10%; */
   /* margin-bottom */
-  padding: 2%;
+  /* padding: 2%; */
   /* display: inline-block; */
   flex-direction: row;
   flex-wrap:nowrap;

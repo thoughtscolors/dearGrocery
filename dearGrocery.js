@@ -121,7 +121,8 @@ function started(event) {
   //   var input = document.getElementById('name')
   //   setName(input.value)
   //   renderName()
-  myList()
+  // myList()
+  createMap()
   // })
 }
 
@@ -138,6 +139,7 @@ function renderName() {
 function myList() {
 
   var insertionPoint = document.getElementsByClassName("main-container")[0]
+  insertionPoint.style.display = "flex"
   var container = document.createElement("div")
   container.classList.add("row")
   var form = document.getElementById("myForm")
@@ -212,7 +214,7 @@ function searchInventory() {
   if (inventory[grocerySearch] === undefined) {
     var buttonDiv = document.createElement("div")
     buttonDiv.classList.add("button-div")
-    buttonDiv.innerHTML = "Try Again"
+    buttonDiv.innerHTML = "Try 'Candy' - duh"
     insertionPoint.append(buttonDiv)
   } else {
     groceryReturn = Object.keys(inventory[grocerySearch])
@@ -319,6 +321,8 @@ function clearForm() {
 
 function createMap() {
   var insertionPoint = document.getElementsByClassName("main-container")[0]
+  insertionPoint.style.display = "block"
+  document.querySelector("#title").innerHTML = "Grocery Map"
   var form = document.getElementById("myForm")
   insertionPoint.removeChild(form)
   insertionPoint.style.width = "660px"
@@ -343,39 +347,95 @@ function createMap() {
     }, 2 * i)
   }
 
-  setTimeout(fillMap, 2000);
+  setTimeout(fillMap1, 2500);
 }
 
-let fillMap = function(event) {
+let fillMap1 = function(event) {
 
-  for (var i = 66; i < 607; i += 30) {
+  for (var i = 68; i < 637; i += 30) {
     for (var j = 0; j < 3; j++) {
       var divpixel = document.getElementsByClassName("divpixels")[i + j];
-      divpixel.style.backgroundColor = "pink"
-      divpixel.style.borderColor = "pink"
+      divpixel.style.backgroundColor = "violet"
+      divpixel.style.borderColor = "violet"
     }
   }
-  setTimeout(fillMap2, 700)
+  setTimeout(fillMap2, 500)
 }
 
 let fillMap2 = function(event) {
 
-  for (var i = 24; i < 607; i += 30) {
+  for (var i = 84; i < 767; i += 30) {
     for (var j = 0; j < 3; j++) {
       var divpixel = document.getElementsByClassName("divpixels")[i + j];
       divpixel.style.backgroundColor = "purple"
       divpixel.style.borderColor = "purple"
     }
   }
-  setTimeout(fillText, 500);
+  setTimeout(fillMap3, 500);
 }
 
-let fillText = function(event) {
-  let textbox = document.getElementsByClassName("divpixels")[97]
+let fillMap3 = function(event) {
+
+  for (var i = 76; i < 607; i += 30) {
+    for (var j = 0; j < 3; j++) {
+      var divpixel = document.getElementsByClassName("divpixels")[i + j];
+      divpixel.style.backgroundColor = "crimson"
+      divpixel.style.borderColor = "crimson"
+    }
+  }
+  setTimeout(fillMap4, 500);
+}
+
+let fillMap4 = function(event) {
+
+  for (var i = 121; i < 727; i += 30) {
+    for (var j = 0; j < 3; j++) {
+      var divpixel = document.getElementsByClassName("divpixels")[i + j];
+      divpixel.style.backgroundColor = "rebeccapurple"
+      divpixel.style.borderColor = "rebeccapurple"
+    }
+  }
+  setTimeout(fillText1, 500);
+}
+
+
+let fillText1 = function(event) {
+  let textbox = document.getElementsByClassName("divpixels")[99]
   textbox.innerHTML = "1B"
 
-  textbox = document.getElementsByClassName("divpixels")[577]
+  textbox = document.getElementsByClassName("divpixels")[579]
   textbox.innerHTML = '1A'
+  setTimeout(fillText2, 500)
+}
+
+let fillText2 = function(event) {
+  let textbox = document.getElementsByClassName("divpixels")[152]
+  textbox.innerHTML = "2A"
+  textbox = document.getElementsByClassName("divpixels")[332]
+  textbox.innerHTML = '2B'
+  textbox = document.getElementsByClassName("divpixels")[512]
+  textbox.innerHTML = '2C'
+  textbox = document.getElementsByClassName("divpixels")[692]
+  textbox.innerHTML = '2D'
+  setTimeout(fillText3, 500)
+}
+
+let fillText3 = function(event) {
+  let textbox = document.getElementsByClassName("divpixels")[115]
+  textbox.innerHTML = "3A"
+  textbox = document.getElementsByClassName("divpixels")[385]
+  textbox.innerHTML = '3B'
+  textbox = document.getElementsByClassName("divpixels")[715]
+  textbox.innerHTML = '3C'
+
+  setTimeout(fillText4, 500)
+}
+
+let fillText4 = function(event) {
+  let textbox = document.getElementsByClassName("divpixels")[107]
+  textbox.innerHTML = "4A"
+  textbox = document.getElementsByClassName("divpixels")[557]
+  textbox.innerHTML = '4B'
 }
 
 let popupWindow = function(event) {
