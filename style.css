@@ -3,9 +3,9 @@ header {
   padding: .01em;
   text-align: center;
   font-weight: bold;
-  background:  rgba(0,0,0,.05) !important;
+  background: rgba(0, 0, 0, .05) !important;
   border: 1px solid black;
-  box-shadow: 0 0 .1em .1em rgba(0,0,0,.2);
+  box-shadow: 0 0 .1em .1em rgba(0, 0, 0, .2);
 }
 
 img {
@@ -35,14 +35,16 @@ img {
 body {
   font-size: 1.3em;
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  color: rgba(255,255,243,.9);
+  color: rgba(255, 255, 243, .9);
   background-image: url("straw.jpeg");
-  background-size:cover;
+  background-size: cover;
+  /* scroll-snap-destination: 0 10%; */
+  /* -webkit-scroll-snap-coordinate: 0% 10%; */
   /* -webkit-tap-highlight-color: transparent; */
 }
 
 :focus {
-    outline: none !important;
+  outline: none !important;
 }
 
 .main-container {
@@ -52,27 +54,30 @@ body {
   /* vertical-align: middle; */
   text-align: center;
   width: auto;
-  height: auto;
+  height: 600px;
   /* border: 2px solid grey; */
-  max-width: 90%;
+  max-width: 100%;
   margin: auto;
   /* margin-top: 10%; */
   /* margin-bottom */
   /* padding: 2%; */
   /* display: inline-block; */
   flex-direction: row;
-  flex-wrap:nowrap;
+  flex-wrap: nowrap;
   /* background-color: rgba(85,85,85,.2); */
   /* -webkit-tap-highlight-color: transparent; */
 }
 
 .col {
   flex-direction: column;
+  /* text-align: center; */
 }
 
 .row {
   flex-direction: row;
-  width: 50%;
+  width: 46%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .btn-primary {
@@ -80,14 +85,14 @@ body {
   padding-right: .7em;
   padding-top: .3em;
   padding-bottom: .3em;
-  color: rgba(255,255,243,.9);
+  color: rgba(255, 255, 243, .9);
   font-size: 1.3em;
   border: 1px solid black;
-  box-shadow: 0 0 .03em .03em rgba(0,0,0,.2);
+  box-shadow: 0 0 .03em .03em rgba(0, 0, 0, .2);
   margin-top: .4em;
   margin-left: .4em;
   margin-right: .4em;
-  background:  rgba(0,0,0,.05) !important;
+  background: rgba(0, 0, 0, .05) !important;
   /* background: transparent; */
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
@@ -108,7 +113,6 @@ button:hover {
   /* font-size: 1.2em; */
 }
 
-
 input {
   /* border-radius: 5px; */
   padding-left: .5em;
@@ -116,10 +120,10 @@ input {
   padding-top: .1em;
   padding-bottom: .1em;
   font-size: 1.3em;
-  background:  rgba(0,0,0,.05) !important;
-  color: rgba(255,255,243,.9);
+  background: rgba(0, 0, 0, .05) !important;
+  color: rgba(255, 255, 243, .9);
   border: 1px solid black;
-  box-shadow: 0 0 .03em .03em rgba(0,0,0,.2);
+  box-shadow: 0 0 .03em .03em rgba(0, 0, 0, .2);
   font-family: 'Yanone Kaffeesatz', sans-serif;
   /* max-width: 1.2em; */
 }
@@ -128,29 +132,55 @@ input {
   max-width: 2em;
   /* padding-top: .em; */
   /* padding-bottom: .1em; */
-  margin-top:  .2em;
+  margin-top: .2em;
 }
 
 .myList {
   width: 25%;
-  /* height: 300px; */
-  text-align: left;
+  height: 100%;
+  text-align: center;
   display: absolute;
-  position: 0,0;
+  position: 0, 0;
   float: left;
   font-size: 1.3em;
+  background: rgba(0, 0, 0, .05) !important;
+  color: rgba(255, 255, 243, .9);
+  border: 1px solid black;
+  box-shadow: 0 0 .03em .03em rgba(0, 0, 0, .2);
+  padding: 2% 0 2% 0;
+  margin-bottom: 300px;
   /* border: 1px solid grey; */
 }
 
+.add {
+  background: rgba(0, 225, 0, .2) !important;
+}
+
+.remove {
+  font-size: .8em;
+  margin-left: 0;
+  border-left: 0;
+  background: rgba(255, 0, 0, .2) !important;
+}
+
+.listRow {}
+
+.item {
+  font-size: .8em;
+  margin-right: 0;
+  width: 70%;
+}
+
 #map {
-  background:  rgba(0,0,0,.05) !important;
+  background: rgba(0, 0, 0, .05) !important;
   width: 660px;
   height: 660px;
   border-style: solid;
   border-width: 1px;
   border-color: black;
-  box-shadow: 0 0 .1em .1em rgba(0,0,0,.2);
+  box-shadow: 0 0 .1em .1em rgba(0, 0, 0, .2);
   margin: auto;
+  margin-bottom: 300px;
 }
 
 h1 {
@@ -161,7 +191,7 @@ h1 {
   /* background-color: rgba(255,255,243,.5); */
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(255,255,243,.5);
+  border-color: rgba(255, 255, 243, .5);
   height: 20px;
   width: 20px;
   float: left;
@@ -174,59 +204,70 @@ h1 {
 }
 
 .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* The actual popup */
+
 .popup .popuptext {
-    visibility: hidden;
-    width: 200px;
-    height: 300px;
-    background-color: rgba(85,85,85,.8);
-    color: #fff;
-    text-align: center;
-    /* border-radius: 6px; */
-    padding: 10px 20px 10px 20px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 70%;
-    margin-left: 10px;
+  visibility: hidden;
+  width: 200px;
+  height: 300px;
+  background-color: rgba(85, 85, 85, .8);
+  color: #fff;
+  text-align: center;
+  /* border-radius: 6px; */
+  padding: 10px 20px 10px 20px;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 70%;
+  margin-left: 10px;
 }
 
 /* Popup arrow off, not aligning properly */
+
 .popup .popuptext::after {
-    /* content: ""; */
-    position: absolute;
-    top: 10px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+  /* content: ""; */
+  position: absolute;
+  top: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
 }
 
 /* Toggle this class - hide and show the popup */
+
 .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-    /* background-color: crimson; */
-    /* display: block; */
-    /* width: 20px; */
-    /* height: 20px; */
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+  /* background-color: crimson; */
+  /* display: block; */
+  /* width: 20px; */
+  /* height: 20px; */
 }
 
 @-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

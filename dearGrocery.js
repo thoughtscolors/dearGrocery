@@ -8,7 +8,7 @@ var inventory = {
 
   'milk': {
     'gallon': ['1B', '2.99', 5],
-    'half': ['1B', '1.59', 5],
+    'half-gallon': ['1B', '1.59', 5],
     'pint': ['1B', '.79', 5]
   },
 
@@ -44,24 +44,24 @@ var inventory = {
   },
 
   'vegetables': {
-    'carrot': ['3A', '2.79', 5],
-    'tomato': ['3A', '2.79', 5],
+    'carrots': ['3A', '2.79', 5],
+    'tomatoes': ['3A', '2.79', 5],
     'broccoli': ['3A', '2.79', 5],
     'kale': ['3A', '2.79', 5],
-    'potato': ['3A', '2.79', 5],
+    'potatoes': ['3A', '2.79', 5],
     'spinach': ['3A', '2.79', 5],
-    'mushroom': ['3A', '2.79', 5]
+    'mushrooms': ['3A', '2.79', 5]
   },
 
-  'fruits': {
-    'apple': ['3B', '1.49', 5],
-    'orange': ['3B', '1.49', 5],
-    'banana': ['3B', '1.49', 5],
-    'lemon': ['3B', '1.49', 5],
-    'lime': ['3B', '1.49', 5],
-    'strawberry': ['3B', '1.49', 5],
-    'raspberry': ['3B', '1.49', 5],
-    'blueberry': ['3B', '1.49', 5]
+  'fruit': {
+    'apples': ['3B', '1.49', 5],
+    'oranges': ['3B', '1.49', 5],
+    'bananas': ['3B', '1.49', 5],
+    'lemons': ['3B', '1.49', 5],
+    'limes': ['3B', '1.49', 5],
+    'strawberries': ['3B', '1.49', 5],
+    'raspberries': ['3B', '1.49', 5],
+    'blueberries': ['3B', '1.49', 5]
   },
 
   'herbs': {
@@ -264,9 +264,9 @@ function quantityForm() {
   var label = document.createElement('label')
   var submit = document.createElement('button')
   var div = document.createElement("div")
-  submit.type = "submit"
   submit.textContent = "Add"
   submit.classList.add("btn-primary")
+  submit.classList.add("add")
   submit.addEventListener("click", addToMyList)
   label.innerHTML = "Quantity "
   newInput.setAttribute('type', 'number');
@@ -279,19 +279,6 @@ function quantityForm() {
   qtyForm.appendChild(submit)
   div.appendChild(qtyForm)
   insertionPoint.appendChild(div)
-  console.log(item, choice, aisle, price);
-
-  // JSON.parse(localStorage.getItem("eggs"))
-
-  // var addListDiv = function () {
-  //   var insertionPoint = document.querySelector("body")
-  //   var div = document.createElement("div")
-  //   console.log(div, insertionPoint)
-  //   div.classList.add("myList")
-  //   div.innerHTML = "My List"
-  //
-  //   insertionPoint.appendChild(div)
-  // }
 }
 
 
@@ -309,7 +296,7 @@ function addToMyList(event) {
   }
   var item = document.querySelector("#search").value
   var quantity = document.querySelector(".quantity").value
-  var values ={}
+  var values = {}
   values[choice] = quantity
   if (localStorage.getItem(item)) {
     values = JSON.parse(localStorage.getItem(item))
@@ -318,19 +305,57 @@ function addToMyList(event) {
   }
 
   localStorage.setItem(item, JSON.stringify(values))
-console.log(localStorage);
+  console.log(localStorage);
 
   var insertionPoint = document.querySelector(".myList")
   var item = document.querySelector("#search").value
-  var ul = document.createElement("ul")
-  var li = document.createElement("li")
-  console.log("addToLocalStorage>>", item, insertionPoint);
-  li.innerHTML = choice + " - " + quantity
-  ul.appendChild(li)
-  insertionPoint.appendChild(ul)
+  var div = document.createElement("div")
+  div.classList.add("listRow")
+  var itemButton = document.createElement("button")
+  itemButton.classList.add("btn-primary")
+  itemButton.classList.add("item")
+
+  let currentValue;
+var showQuantity = function (event) {
+  currentValue = itemButton.textContent
+  itemButton.textContent = quantity
+}
+var showItem = function (event) {
+  itemButton.textContent = currentValue
+}
+
+itemButton.addEventListener("mouseover", showQuantity)
+itemButton.addEventListener("mouseleave", showItem)
+
+  var listItem;
+  console.log(choice);
+  if (choice === "dozen" || choice === "half-dozen" || choice === "eighteen") {
+    listItem = "eggs, " + choice
+    // console.log("why are we in here");
+  } else if (choice === "gallon" || choice === "half-gallon" || choice === "pint") {
+    listItem = "milk, " + choice
+  } else {
+    listItem = choice
+  }
+
+  itemButton.textContent = listItem
+  var removeButton = document.createElement("button")
+  removeButton.classList.add("remove")
+  removeButton.classList.add("btn-primary")
+  removeButton.textContent = "X"
+  removeButton.addEventListener("click", removeItem)
+  div.append(itemButton)
+  div.append(removeButton)
+  insertionPoint.appendChild(div)
 
   clearForm()
+
 }
+
+function removeItem (event) {
+  console.log(event.target.parentNode.remove())
+}
+
 
 function clearForm() {
   var insertionPoint = document.getElementById("options")
@@ -372,7 +397,7 @@ function createMap() {
 
 }
 
-var changeBorder = function () {
+var changeBorder = function() {
   let array = document.getElementsByClassName("divpixels")
   for (var i = 0; i < array.length; i++) {
     let changepixel = array[i]
@@ -387,8 +412,8 @@ let fillMap1 = function(event) {
   for (var i = 68; i < 637; i += 30) {
     for (var j = 0; j < 3; j++) {
       var divpixel = document.getElementsByClassName("divpixels")[i + j];
-      divpixel.style.backgroundColor = 	"rgba(238,130,238,.8)"
-      divpixel.style.borderColor = 	"rgba(238,130,238,.8 )"
+      divpixel.style.backgroundColor = "rgba(238,130,238,.8)"
+      divpixel.style.borderColor = "rgba(238,130,238,.8 )"
     }
   }
   setTimeout(fillMap2, 500)
@@ -501,7 +526,7 @@ let fillText4 = function(event) {
   setTimeout(populateMapLocations, 500)
 }
 
-let populateMapLocations = function (event) {
+let populateMapLocations = function(event) {
   let list = Object.keys(localStorage)
   console.log(list);
   // let itemType = JSON.parse(localStorage.getItem(list[3][0]))
@@ -533,7 +558,7 @@ let populateMapLocations = function (event) {
 
 }
 
-let closeWindow = function (event) {
+let closeWindow = function(event) {
   console.log("mouseleave");
   event.currentTarget.childNodes[0].classList.remove("show")
 }
