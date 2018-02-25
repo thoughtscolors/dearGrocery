@@ -360,6 +360,8 @@ function addToMyList(event) {
     itemButton.textContent = currentValue
   }
   var plusOne = function(event) {
+    var item = event.target.id
+    var choice = $(event.target).siblings(".remove")[0].id
     quantity = Number(quantity) + 1
     itemButton.textContent = quantity
     values = JSON.parse(localStorage.getItem(item))
@@ -607,12 +609,10 @@ let populateMapLocations = function(event) {
   let image = document.createElement('img')
   let popupDiv = document.createElement("div")
   let popupImg = document.createElement('img')
-  popupImg.classList.add("popupyou")
+  popupDiv.classList.add("popupyou")
   popupImg.setAttribute("src", "you.png")
   popupDiv.innerHTML = "You Are Here"
-  popupDiv.append(popupImg)
-  popupDiv.classList.add("popupyou")
-  popupDiv.classList.add("tooltip__content")
+  popupDiv.appendChild(popupImg)
   //popupDiv.id = "myPopup"
   yourLocation.appendChild(popupDiv)
   image.setAttribute("src", "pulse_dot.gif")
