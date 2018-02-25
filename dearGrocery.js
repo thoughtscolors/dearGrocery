@@ -118,15 +118,13 @@ function started(event) {
 
   console.log("loaded");
 
-  // document.getElementById('myForm').addEventListener('submit', function(event) {
-  //   event.preventDefault()
-  //
-  //   var input = document.getElementById('name')
-  //   setName(input.value)
-  //   renderName()
-  myList()
-  // createMap()
-  // })
+  document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault()
+
+    var input = document.getElementById('name')
+    setName(input.value)
+    renderName()
+  })
 }
 
 function setName(name) {
@@ -137,6 +135,10 @@ function renderName() {
   var username = localStorage.getItem("name")
   var user = document.getElementById("user")
   user.innerHTML = username
+  $(document).ready(function() {
+    $("input").attr("autocomplete", "off");
+  });
+  myList()
 }
 
 function myList() {
@@ -286,7 +288,7 @@ function quantityForm() {
 function addToMyList(event) {
   event.preventDefault()
 
-  if (localStorage.length === 0) {
+  if (localStorage.length === 1) {
     let insertionPoint = document.querySelector("#go")
     let doneButton = document.createElement("button")
     doneButton.classList.add("btn-primary")
@@ -295,7 +297,12 @@ function addToMyList(event) {
     insertionPoint.parentNode.appendChild(doneButton)
   }
   var item = document.querySelector("#search").value
-  var quantity = document.querySelector(".quantity").value
+  // console.log(event.currentTarget, "current", event.target, "target");
+  // target = event.target
+  var quantity = event.currentTarget.parentNode.childNodes[1].value
+  // var upALevel = event.currentTarget.parentNode
+  // var choice = $(event.target).parent().siblings(".col")
+  // console.log(upALevel, "/", choice, "parent/choice");
   var values = {}
   values[choice] = quantity
   if (localStorage.getItem(item)) {
@@ -314,18 +321,49 @@ function addToMyList(event) {
   var itemButton = document.createElement("button")
   itemButton.classList.add("btn-primary")
   itemButton.classList.add("item")
+  itemButton.id = item
+
 
   let currentValue;
-var showQuantity = function (event) {
-  currentValue = itemButton.textContent
-  itemButton.textContent = quantity
-}
-var showItem = function (event) {
-  itemButton.textContent = currentValue
-}
+  var showQuantity = function(event) {
+    currentValue = itemButton.textContent
+    itemButton.textContent = quantity
+  }
+  var showItem = function(event) {
+    itemButton.textContent = currentValue
+  }
+  var plusOne = function(event) {
+    quantity = Number(quantity) + 1
+    itemButton.textContent = quantity
+    values = JSON.parse(localStorage.getItem(item))
+    console.log(values, "values gotten");
+    values[choice] = quantity
+    localStorage.setItem(item, JSON.stringify(values))
+    console.log(localStorage);
+  }
 
-itemButton.addEventListener("mouseover", showQuantity)
-itemButton.addEventListener("mouseleave", showItem)
+  var removeItem = function(event) {
+    var clicked = event.target
+    clicked.parentNode.remove()
+    var choice = clicked.id
+    var item = $(this).siblings(clicked)[0].id
+    console.log(item, choice, "clicked")
+    let values = JSON.parse(localStorage.getItem(item))
+    console.log(values, "values gotten");
+    delete values[choice]
+    console.log(values, "values modified");
+    if (Object.keys(values).length === 0) {
+      localStorage.removeItem(item)
+      console.log("object is empty removing value");
+    } else {
+      localStorage.setItem(item, JSON.stringify(values))
+    }
+    console.log(localStorage, "localStorage updated");
+  }
+
+  itemButton.addEventListener("mouseover", showQuantity)
+  itemButton.addEventListener("mouseleave", showItem)
+  itemButton.addEventListener("click", plusOne)
 
   var listItem;
   console.log(choice);
@@ -334,27 +372,26 @@ itemButton.addEventListener("mouseleave", showItem)
     // console.log("why are we in here");
   } else if (choice === "gallon" || choice === "half-gallon" || choice === "pint") {
     listItem = "milk, " + choice
+  } else if (choice === "white" || choice === "wheat" || choice === "french" || choice === "sourdough") {
+    listItem = choice + " bread"
   } else {
     listItem = choice
   }
-
   itemButton.textContent = listItem
   var removeButton = document.createElement("button")
   removeButton.classList.add("remove")
   removeButton.classList.add("btn-primary")
   removeButton.textContent = "X"
+  removeButton.id = choice
   removeButton.addEventListener("click", removeItem)
   div.append(itemButton)
   div.append(removeButton)
   insertionPoint.appendChild(div)
 
-  clearForm()
-
 }
 
-function removeItem (event) {
-  console.log(event.target.parentNode.remove())
-}
+
+
 
 
 function clearForm() {
@@ -364,6 +401,7 @@ function clearForm() {
 }
 
 function createMap() {
+  clearForm()
   var insertionPoint = document.getElementsByClassName("main-container")[0]
   insertionPoint.style.display = "block"
   document.querySelector("#title").innerHTML = "Grocery Map"
@@ -390,7 +428,7 @@ function createMap() {
   }
 
   setTimeout(fillMap1, 2500);
-  setTimeout(changeBorder, 7000)
+  setTimeout(changeBorder, 6500)
 
 
 
@@ -523,7 +561,7 @@ let fillText4 = function(event) {
   textbox.append('4B')
   textbox.id = "4B"
   // textbox.addEventListener("click", popupWindow)
-  setTimeout(populateMapLocations, 500)
+  setTimeout(populateMapLocations, 800)
 }
 
 let populateMapLocations = function(event) {
