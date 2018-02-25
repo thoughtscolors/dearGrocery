@@ -310,10 +310,11 @@ function quantityForm() {
 function addToMyList(event) {
   event.preventDefault()
 
-  if (localStorage.length === 1) {
+  if (localStorage.length === 1  && document.querySelector("#done") === null) {
     let insertionPoint = document.querySelector("#go")
     let doneButton = document.createElement("button")
     doneButton.classList.add("btn-primary")
+    doneButton.id = "done"
     doneButton.innerHTML = "Done"
     doneButton.addEventListener("click", createMap)
     insertionPoint.parentNode.appendChild(doneButton)
@@ -638,6 +639,7 @@ var itemLocations = function () {
           let parsedObject = JSON.parse(localStorage.getItem(key))
           let listArray = Object.keys(parsedObject)
           let itemQty;
+
           var removeItem = function(event) {
             event.target.remove()
             // var choice = clicked.id
@@ -656,8 +658,11 @@ var itemLocations = function () {
             // console.log(localStorage, "localStorage updated");
           }
 
+          console.log(parsedObject);
+          console.log(listArray);
           for (var i = 0; i < listArray.length; i++) {
             itemQty = parsedObject[listArray[i]]
+            console.log(itemQty);
             let button = document.createElement("button")
             button.classList.add("btn-popup")
             button.addEventListener("click", removeItem)
