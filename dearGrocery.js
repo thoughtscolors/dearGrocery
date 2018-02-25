@@ -310,7 +310,7 @@ function quantityForm() {
 function addToMyList(event) {
   event.preventDefault()
 
-  if (localStorage.length === 1  && document.querySelector("#done") === null) {
+  if (localStorage.length === 1 && document.querySelector("#done") === null) {
     let insertionPoint = document.querySelector("#go")
     let doneButton = document.createElement("button")
     doneButton.classList.add("btn-primary")
@@ -612,79 +612,80 @@ let populateMapLocations = function(event) {
   yourLocation.appendChild(imgDiv)
 
 
-var itemLocations = function () {
-  let list = Object.keys(localStorage)
-  let itemLocation;
-  console.log(list, "localStorage list")
-  for (var key in localStorage) {
-    if (inventory.hasOwnProperty(key)) {
-      for (var i = 0; i < list.length; i++) {
-        if (list[i] === key) {
-          itemLocation = inventory[key]['location']
-          console.log(itemLocation, "aisle");
-          let insertionPoint = document.getElementById(itemLocation)
-          insertionPoint.addEventListener("mouseover", popupWindow)
-          insertionPoint.addEventListener("mouseleave", closeWindow)
-          let imgDiv = document.createElement("div")
-          let image = document.createElement('img')
-          let popupDiv = document.createElement("div")
-          let popupImg = document.createElement('img')
-          popupImg.classList.add("popup-img")
-          let imgSource = inventory[key]['image']
-          popupImg.setAttribute("src", imgSource)
-          popupDiv.innerHTML = key
-          popupDiv.appendChild(popupImg)
-          popupDiv.classList.add("popuptext")
-          popupDiv.classList.add("tooltip__content")
-          let parsedObject = JSON.parse(localStorage.getItem(key))
-          let listArray = Object.keys(parsedObject)
-          let itemQty;
+  var itemLocations = function() {
+    let list = Object.keys(localStorage)
+    let itemLocation;
+    console.log(list, "localStorage list")
+    for (var key in localStorage) {
+      if (inventory.hasOwnProperty(key)) {
+        for (var i = 0; i < list.length; i++) {
+          if (list[i] === key) {
+            itemLocation = inventory[key]['location']
+            console.log(itemLocation, "aisle");
+            let insertionPoint = document.getElementById(itemLocation)
+            insertionPoint.addEventListener("mouseover", popupWindow)
+            insertionPoint.addEventListener("mouseleave", closeWindow)
+            let imgDiv = document.createElement("div")
+            let image = document.createElement('img')
+            let popupDiv = document.createElement("div")
+            let popupImg = document.createElement('img')
+            popupImg.classList.add("popup-img")
+            let imgSource = inventory[key]['image']
+            popupImg.setAttribute("src", imgSource)
+            popupDiv.innerHTML = key
+            popupDiv.appendChild(popupImg)
+            popupDiv.classList.add("popuptext")
+            popupDiv.classList.add("tooltip__content")
+            let parsedObject = JSON.parse(localStorage.getItem(key))
+            let listArray = Object.keys(parsedObject)
+            let itemQty;
 
-          var removeItem = function(event) {
-            event.target.remove()
-            // var choice = clicked.id
-            // var item = $(this).siblings(clicked)[0].id
-            // console.log(item, choice, "clicked")
-            // let values = JSON.parse(localStorage.getItem(item))
-            // console.log(values, "values gotten");
-            // delete values[choice]
-            // console.log(values, "values modified");
-            // if (Object.keys(values).length === 0) {
-            //   localStorage.removeItem(item)
-            //   console.log("object is empty removing value");
-            // } else {
-            //   localStorage.setItem(item, JSON.stringify(values))
-            // }
-            // console.log(localStorage, "localStorage updated");
+            var removeItem = function(event) {
+              event.target.remove()
+              // var choice = clicked.id
+              // var item = $(this).siblings(clicked)[0].id
+              // console.log(item, choice, "clicked")
+              // let values = JSON.parse(localStorage.getItem(item))
+              // console.log(values, "values gotten");
+              // delete values[choice]
+              // console.log(values, "values modified");
+              // if (Object.keys(values).length === 0) {
+              //   localStorage.removeItem(item)
+              //   console.log("object is empty removing value");
+              // } else {
+              //   localStorage.setItem(item, JSON.stringify(values))
+              // }
+              // console.log(localStorage, "localStorage updated");
+            }
+
+            console.log(parsedObject);
+            console.log(listArray);
+            for (var i = 0; i < listArray.length; i++) {
+              console.log(i);
+              itemQty = parsedObject[listArray[i]]
+              console.log(itemQty);
+              let button = document.createElement("button")
+              button.classList.add("btn-popup")
+              button.addEventListener("click", removeItem)
+              button.textContent = itemQty + " " + listArray[i]
+              popupDiv.appendChild(button)
+            }
+
+
+            //popupDiv.id = "myPopup"
+            image.setAttribute("src", "pulse_dot.gif")
+            imgDiv.append(image)
+            insertionPoint.append(popupDiv)
+            insertionPoint.appendChild(imgDiv)
+
+
           }
-
-          console.log(parsedObject);
-          console.log(listArray);
-          for (var i = 0; i < listArray.length; i++) {
-            itemQty = parsedObject[listArray[i]]
-            console.log(itemQty);
-            let button = document.createElement("button")
-            button.classList.add("btn-popup")
-            button.addEventListener("click", removeItem)
-            button.textContent = itemQty + " " + listArray[i]
-            popupDiv.appendChild(button)
-          }
-
-
-          //popupDiv.id = "myPopup"
-          image.setAttribute("src", "pulse_dot.gif")
-          imgDiv.append(image)
-          insertionPoint.append(popupDiv)
-          insertionPoint.appendChild(imgDiv)
-
-
         }
       }
     }
   }
-}
 
-setTimeout(itemLocations, 500)
+  setTimeout(itemLocations, 500)
 
 
   // let itemLocation = document.getElementsByClassName("divpixels")[101]

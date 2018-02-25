@@ -237,8 +237,8 @@ h1 {
 
 .popup .popuptext {
   visibility: hidden;
-  width: 240px;
-  height: 280px;
+  width: 260px;
+  height: 370px;
   background-color: rgba(85, 85, 85, .8);
   color: #fff;
   text-align: center;
@@ -249,6 +249,7 @@ h1 {
   top: -799%;
   left: 70%;
   margin-left: 10px;
+  /* display: block; */
 }
 
 .popup .popupyou {
