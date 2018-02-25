@@ -3,13 +3,17 @@ var inventory = {
   'eggs': {
     'dozen': ['1A', '4.99', 4],
     'half-dozen': ['1A', '2.69', 4],
-    'eighteen': ['1A', '6.99', 2]
+    'eighteen': ['1A', '6.99', 2],
+    'location': '1A',
+    'image': 'eggs.jpg'
   },
 
   'milk': {
     'gallon': ['1B', '2.99', 5],
     'half-gallon': ['1B', '1.59', 5],
-    'pint': ['1B', '.79', 5]
+    'pint': ['1B', '.79', 5],
+    'location': '1B',
+    'image': 'milk.jpg'
   },
 
   'cheese': {
@@ -17,14 +21,18 @@ var inventory = {
     'swiss': ['2A', '2.99', 10],
     'brie': ['2A', '2.99', 10],
     'blue': ['2A', '2.99', 10],
-    'parmesan': ['2A', '2.99', 10]
+    'parmesan': ['2A', '2.99', 10],
+    'location': '2A',
+    'image': 'cheese.jpg'
   },
 
   'bread': {
     'wheat': ['2B', '3.49', 7],
     'white': ['2B', '3.49', 7],
     'french': ['2B', '3.49', 7],
-    'sourdough': ['2B', '3.49', 7]
+    'sourdough': ['2B', '3.49', 7],
+    'location': '2B',
+    'image': 'bread.jpeg'
   },
 
   'meat': {
@@ -33,7 +41,9 @@ var inventory = {
     'porkchop': ['2C', '7.99', 4],
     'sausage': ['2C', '7.99', 4],
     'bacon': ['2C', '7.99', 4],
-    'chicken': ['2C', '7.99', 4]
+    'chicken': ['2C', '7.99', 4],
+    'location': '2C',
+    'image': "meat.jpg"
   },
 
   'seafood': {
@@ -41,6 +51,8 @@ var inventory = {
     'halibut': ['2D', '12.99', 4],
     'shrimp': ['2D', '7.99', 4],
     'oyster': ['2D', '7.99', 4],
+    'location': '2D',
+    'image': 'seafood.jpg'
   },
 
   'vegetables': {
@@ -50,7 +62,9 @@ var inventory = {
     'kale': ['3A', '2.79', 5],
     'potatoes': ['3A', '2.79', 5],
     'spinach': ['3A', '2.79', 5],
-    'mushrooms': ['3A', '2.79', 5]
+    'mushrooms': ['3A', '2.79', 5],
+    'location': '3A',
+    'image': 'vegetables.jpg'
   },
 
   'fruit': {
@@ -61,7 +75,9 @@ var inventory = {
     'limes': ['3B', '1.49', 5],
     'strawberries': ['3B', '1.49', 5],
     'raspberries': ['3B', '1.49', 5],
-    'blueberries': ['3B', '1.49', 5]
+    'blueberries': ['3B', '1.49', 5],
+    'location': '3B',
+    'image': 'fruit.jpg'
   },
 
   'herbs': {
@@ -70,7 +86,9 @@ var inventory = {
     'sage': ['3C', '1.09', 0],
     'cilantro': ['3C', '1.09', 0],
     'dill': ['3C', '1.09', 0],
-    'parsley': ['3C', '1.09', 0]
+    'parsley': ['3C', '1.09', 0],
+    'location': '3C',
+    'image': 'herbs.jpg'
   },
 
   'bulk': {
@@ -78,7 +96,9 @@ var inventory = {
     'beans': ['4A', '.49', 25],
     'snackeroos': ['4A', '.49', 25],
     'rice': ['4A', '.49', 25],
-    'chocolate chips': ['4A', '.49', 25]
+    'chocolate chips': ['4A', '.49', 25],
+    'location': '4A',
+    'image': 'bulk.jpg'
   },
 
   'candy': {
@@ -87,7 +107,9 @@ var inventory = {
     'swedish fish': ['4B', '3.99', 17],
     'gummie bears': ['4B', '3.99', 17],
     'decadence decadence': ['4B', '3.99', 17],
-    'kinder bueno': ['4B', '3.99', 17]
+    'kinder bueno': ['4B', '3.99', 17],
+    'location': '4B',
+    'image': 'candy.jpg'
   }
 };
 
@@ -239,7 +261,7 @@ function searchInventory() {
 function options() {
   var buttonDiv = document.createElement("div")
   buttonDiv.classList.add("button-div")
-  for (var i = 0; i < groceryReturn.length; i++) {
+  for (var i = 0; i < groceryReturn.length - 2; i++) {
     var div = document.createElement("div")
     div.classList.add("col")
     choiceButton = document.createElement("button")
@@ -420,19 +442,11 @@ function createMap() {
       var divpixel = document.createElement("div");
       divpixel.classList.add("divpixels");
       divpixel.classList.add("popup")
-
-      // divpixel.innerHTML = "<img src=\"giphy.gif\" width=\"100px\" height=\"100px\">"
-
       map.append(divpixel);
     }, 2 * i)
   }
 
   setTimeout(fillMap1, 2500);
-  setTimeout(changeBorder, 6500)
-
-
-
-
 }
 
 var changeBorder = function() {
@@ -497,11 +511,13 @@ let fillMap4 = function(event) {
 let fillText1 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[99]
   textbox.append("1B")
+  textbox = document.getElementsByClassName("divpixels")[101]
   textbox.id = "1B"
   // textbox.addEventListener("click", popupWindow)
 
   textbox = document.getElementsByClassName("divpixels")[579]
   textbox.append("1A")
+  textbox = document.getElementsByClassName("divpixels")[581]
   textbox.id = "1A"
   // textbox.addEventListener("click", popupWindow)
 
@@ -511,21 +527,25 @@ let fillText1 = function(event) {
 let fillText2 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[152]
   textbox.append("2A")
+  textbox = document.getElementsByClassName("divpixels")[154]
   textbox.id = "2A"
   // textbox.addEventListener("click", popupWindow)
 
   textbox = document.getElementsByClassName("divpixels")[332]
   textbox.append('2B')
+  textbox = document.getElementsByClassName("divpixels")[334]
   textbox.id = "2B"
   // textbox.addEventListener("click", popupWindow)
 
   textbox = document.getElementsByClassName("divpixels")[512]
   textbox.append('2C')
+  textbox = document.getElementsByClassName("divpixels")[514]
   textbox.id = "2C"
   // textbox.addEventListener("click", popupWindow)
 
   textbox = document.getElementsByClassName("divpixels")[692]
   textbox.append('2D')
+  textbox = document.getElementsByClassName("divpixels")[694]
   textbox.id = "2D"
   // textbox.addEventListener("click", popupWindow)
 
@@ -535,16 +555,19 @@ let fillText2 = function(event) {
 let fillText3 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[115]
   textbox.append("3A")
+  textbox = document.getElementsByClassName("divpixels")[117]
   textbox.id = "3A"
   // textbox.addEventListener("click", popupWindow)
 
   textbox = document.getElementsByClassName("divpixels")[385]
   textbox.append('3B')
+  textbox = document.getElementsByClassName("divpixels")[387]
   textbox.id = "3B"
   // textbox.addEventListener("click", popupWindow)
 
   textbox = document.getElementsByClassName("divpixels")[715]
   textbox.append('3C')
+  textbox = document.getElementsByClassName("divpixels")[717]
   textbox.id = "3C"
   // textbox.addEventListener("click", popupWindow)
 
@@ -554,45 +577,97 @@ let fillText3 = function(event) {
 let fillText4 = function(event) {
   let textbox = document.getElementsByClassName("divpixels")[107]
   textbox.append("4A")
+  textbox = document.getElementsByClassName("divpixels")[109]
   textbox.id = "4A"
   // textbox.addEventListener("click", popupWindow)
 
   textbox = document.getElementsByClassName("divpixels")[557]
   textbox.append('4B')
+  textbox = document.getElementsByClassName("divpixels")[559]
   textbox.id = "4B"
   // textbox.addEventListener("click", popupWindow)
-  setTimeout(populateMapLocations, 800)
+  setTimeout(changeBorder, 800)
+  setTimeout(populateMapLocations, 1500)
 }
 
 let populateMapLocations = function(event) {
-  let list = Object.keys(localStorage)
-  console.log(list);
-  // let itemType = JSON.parse(localStorage.getItem(list[3][0]))
-  // console.log(itemType);
-  let itemLocation = document.getElementsByClassName("divpixels")[101]
-  // console.log(itemLocation);
-  // let qty =
-  itemLocation.addEventListener("mouseover", popupWindow)
-  itemLocation.addEventListener("mouseleave", closeWindow)
+  let yourLocation = document.getElementsByClassName("divpixels")[854]
+  yourLocation.addEventListener("mouseover", popupWindow)
+  yourLocation.addEventListener("mouseleave", closeWindow)
   let imgDiv = document.createElement("div")
   let image = document.createElement('img')
   let popupDiv = document.createElement("div")
   let popupImg = document.createElement('img')
-  popupImg.classList.add("popup-img")
-  popupImg.setAttribute("src", "eggs.jpg")
-  popupDiv.innerHTML = "Eggs"
+  popupImg.classList.add("popupyou")
+  popupImg.setAttribute("src", "you.png")
+  popupDiv.innerHTML = "You Are Here"
   popupDiv.append(popupImg)
-  popupDiv.classList.add("popuptext")
+  popupDiv.classList.add("popupyou")
   popupDiv.classList.add("tooltip__content")
   //popupDiv.id = "myPopup"
-  itemLocation.appendChild(popupDiv)
+  yourLocation.appendChild(popupDiv)
   image.setAttribute("src", "pulse_dot.gif")
   imgDiv.append(image)
-  itemLocation.appendChild(imgDiv)
-  for (var i = 0; i < list.length; i++) {
+  yourLocation.appendChild(imgDiv)
 
 
+var itemLocations = function () {
+  let list = Object.keys(localStorage)
+  let itemLocation;
+  console.log(list, "localStorage list")
+  for (var key in localStorage) {
+    if (inventory.hasOwnProperty(key)) {
+      for (var i = 0; i < list.length; i++) {
+        if (list[i] === key) {
+          itemLocation = inventory[key]['location']
+          console.log(itemLocation, "aisle");
+          let insertionPoint = document.getElementById(itemLocation)
+          insertionPoint.addEventListener("mouseover", popupWindow)
+          insertionPoint.addEventListener("mouseleave", closeWindow)
+          let imgDiv = document.createElement("div")
+          let image = document.createElement('img')
+          let popupDiv = document.createElement("div")
+          let popupImg = document.createElement('img')
+          popupImg.classList.add("popup-img")
+          imgSource = inventory[key]['image']
+          popupImg.setAttribute("src", imgSource)
+          popupDiv.innerHTML = key
+          popupDiv.appendChild(popupImg)
+          popupDiv.classList.add("popuptext")
+          popupDiv.classList.add("tooltip__content")
+          //popupDiv.id = "myPopup"
+          image.setAttribute("src", "pulse_dot.gif")
+          imgDiv.append(image)
+          insertionPoint.append(popupDiv)
+          insertionPoint.appendChild(imgDiv)
+        }
+      }
+    }
   }
+}
+
+setTimeout(itemLocations, 500)
+
+
+  // let itemLocation = document.getElementsByClassName("divpixels")[101]
+  // itemLocation.addEventListener("mouseover", popupWindow)
+  // itemLocation.addEventListener("mouseleave", closeWindow)
+  // let imgDiv = document.createElement("div")
+  // let image = document.createElement('img')
+  // let popupDiv = document.createElement("div")
+  // let popupImg = document.createElement('img')
+  // popupImg.classList.add("popup-img")
+  // popupImg.setAttribute("src", "eggs.jpg")
+  // popupDiv.innerHTML = "Eggs"
+  // popupDiv.append(popupImg)
+  // popupDiv.classList.add("popuptext")
+  // popupDiv.classList.add("tooltip__content")
+  // //popupDiv.id = "myPopup"
+  // itemLocation.appendChild(popupDiv)
+  // image.setAttribute("src", "pulse_dot.gif")
+  // imgDiv.append(image)
+  // itemLocation.appendChild(imgDiv)
+
 
 }
 
