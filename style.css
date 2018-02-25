@@ -1,9 +1,11 @@
 header {
   /* display: inline-block; */
-  padding: .05em;
+  padding: .01em;
   text-align: center;
   font-weight: bold;
-  background-color: violet;
+  background:  rgba(0,0,0,.05) !important;
+  border: 1px solid black;
+  box-shadow: 0 0 .1em .1em rgba(0,0,0,.2);
 }
 
 img {
@@ -14,7 +16,7 @@ img {
 .menu {
   float: right;
   width: 10%;
-  height: 1em;
+  height: .9em;
   display: inline-block;
   position: absolute;
   right: 0;
@@ -25,14 +27,22 @@ img {
   /* width: 10%; */
   height: .7em;
   display: inline-block;
-  padding-left: .7em;
+  padding-left: 1em;
   position: absolute;
   left: 0;
 }
 
 body {
-  font-size: 1.1em;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3em;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: rgba(255,255,243,.9);
+  background-image: url("straw.jpeg");
+  background-size:cover;
+  /* -webkit-tap-highlight-color: transparent; */
+}
+
+:focus {
+    outline: none !important;
 }
 
 .main-container {
@@ -52,6 +62,8 @@ body {
   /* display: inline-block; */
   flex-direction: row;
   flex-wrap:nowrap;
+  /* background-color: rgba(85,85,85,.2); */
+  /* -webkit-tap-highlight-color: transparent; */
 }
 
 .col {
@@ -66,14 +78,18 @@ body {
 .btn-primary {
   padding-left: .7em;
   padding-right: .7em;
-  padding-top: .2em;
-  padding-bottom: .2em;
-  color: #001212;
-  font-size: 1.1em;
-  border-radius: 25px;
+  padding-top: .3em;
+  padding-bottom: .3em;
+  color: rgba(255,255,243,.9);
+  font-size: 1.3em;
+  border: 1px solid black;
+  box-shadow: 0 0 .03em .03em rgba(0,0,0,.2);
   margin-top: .4em;
   margin-left: .4em;
   margin-right: .4em;
+  background:  rgba(0,0,0,.05) !important;
+  /* background: transparent; */
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 button:hover {
@@ -94,13 +110,25 @@ button:hover {
 
 
 input {
-  border-radius: 5px;
-  font-size: 1.2em;
+  /* border-radius: 5px; */
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .1em;
+  padding-bottom: .1em;
+  font-size: 1.3em;
+  background:  rgba(0,0,0,.05) !important;
+  color: rgba(255,255,243,.9);
+  border: 1px solid black;
+  box-shadow: 0 0 .03em .03em rgba(0,0,0,.2);
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   /* max-width: 1.2em; */
 }
 
 .quantity {
   max-width: 2em;
+  /* padding-top: .em; */
+  /* padding-bottom: .1em; */
+  margin-top:  .2em;
 }
 
 .myList {
@@ -110,17 +138,18 @@ input {
   display: absolute;
   position: 0,0;
   float: left;
+  font-size: 1.3em;
   /* border: 1px solid grey; */
 }
 
 #map {
-  background-color: #f2f2f2;
+  background:  rgba(0,0,0,.05) !important;
   width: 660px;
   height: 660px;
   border-style: solid;
   border-width: 1px;
   border-color: black;
-  box-shadow: 1px 1px .2em .2em grey;
+  box-shadow: 0 0 .1em .1em rgba(0,0,0,.2);
   margin: auto;
 }
 
@@ -129,15 +158,19 @@ h1 {
 }
 
 .divpixels {
-  background-color: white;
+  /* background-color: rgba(255,255,243,.5); */
   border-style: solid;
   border-width: 1px;
-  border-color: white;
+  border-color: rgba(255,255,243,.5);
   height: 20px;
   width: 20px;
   float: left;
   text-align: center;
   vertical-align: middle;
+}
+
+.popup-img {
+  margin: 20px 0 20px 0;
 }
 
 .popup {
@@ -153,24 +186,24 @@ h1 {
 /* The actual popup */
 .popup .popuptext {
     visibility: hidden;
-    width: 160px;
-    height: 100px;
-    background-color: #555;
+    width: 200px;
+    height: 300px;
+    background-color: rgba(85,85,85,.8);
     color: #fff;
     text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
+    /* border-radius: 6px; */
+    padding: 10px 20px 10px 20px;
     position: absolute;
     z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
+    top: 50%;
+    left: 70%;
+    margin-left: 10px;
 }
 
-/* Popup arrow */
+/* Popup arrow off, not aligning properly */
 .popup .popuptext::after {
-    content: "";
-    position: unset;
+    /* content: ""; */
+    position: absolute;
     top: 10px;
     border-width: 5px;
     border-style: solid;

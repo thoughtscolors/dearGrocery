@@ -100,11 +100,14 @@ function started(event) {
   $(document).ready(function() {
     $("input").attr("autocomplete", "off");
   });
+
+  localStorage.clear()
+  console.log(localStorage);
   // var divpixel = document.createElement("div");
   // divpixel.classList.add("divpixels");
   // divpixel.classList.add("popup")
   // divpixel.addEventListener("click", popupWindow)
-  // divpixel.innerHTML = "<img src=\"pulse.gif\" width=\"100px\" height=\"100px\">"
+  // divpixel.innerHTML = "<img src=\"giphy.gif\" width=\"100px\" height=\"100px\">"
   // let popupDiv = document.createElement("div")
   // popupDiv.innerHTML = "Hey"
   // popupDiv.classList.add("popuptext")
@@ -121,8 +124,8 @@ function started(event) {
   //   var input = document.getElementById('name')
   //   setName(input.value)
   //   renderName()
-  // myList()
-  createMap()
+  myList()
+  // createMap()
   // })
 }
 
@@ -153,6 +156,7 @@ function myList() {
   var submit = document.createElement('button')
   submit.type = "submit"
   submit.textContent = "Go"
+  submit.id = "go"
   submit.classList.add("btn-primary")
   submit.addEventListener("click", searchInventory)
   label.innerHTML = "Search items "
@@ -214,7 +218,7 @@ function searchInventory() {
   if (inventory[grocerySearch] === undefined) {
     var buttonDiv = document.createElement("div")
     buttonDiv.classList.add("button-div")
-    buttonDiv.innerHTML = "Try 'Candy' - duh"
+    buttonDiv.innerHTML = "Try 'candy' - duh"
     insertionPoint.append(buttonDiv)
   } else {
     groceryReturn = Object.keys(inventory[grocerySearch])
@@ -266,6 +270,8 @@ function quantityForm() {
   submit.addEventListener("click", addToMyList)
   label.innerHTML = "Quantity "
   newInput.setAttribute('type', 'number');
+  newInput.setAttribute("min", "1")
+  newInput.setAttribute("value", "1")
   newInput.classList.add('quantity')
   qtyForm.classList.add("list")
   qtyForm.appendChild(label)
@@ -292,14 +298,27 @@ function quantityForm() {
 
 function addToMyList(event) {
   event.preventDefault()
+
+  if (localStorage.length === 0) {
+    let insertionPoint = document.querySelector("#go")
+    let doneButton = document.createElement("button")
+    doneButton.classList.add("btn-primary")
+    doneButton.innerHTML = "Done"
+    doneButton.addEventListener("click", createMap)
+    insertionPoint.parentNode.appendChild(doneButton)
+  }
   var item = document.querySelector("#search").value
   var quantity = document.querySelector(".quantity").value
-
+  var values ={}
+  values[choice] = quantity
   if (localStorage.getItem(item)) {
-
+    values = JSON.parse(localStorage.getItem(item))
+    console.log(values, "values gotten");
+    values[choice] = quantity
   }
-  localStorage.setItem(item, JSON.stringify([choice, quantity]))
 
+  localStorage.setItem(item, JSON.stringify(values))
+console.log(localStorage);
 
   var insertionPoint = document.querySelector(".myList")
   var item = document.querySelector("#search").value
@@ -323,8 +342,10 @@ function createMap() {
   var insertionPoint = document.getElementsByClassName("main-container")[0]
   insertionPoint.style.display = "block"
   document.querySelector("#title").innerHTML = "Grocery Map"
-  var form = document.getElementById("myForm")
-  insertionPoint.removeChild(form)
+  var list = document.getElementsByClassName("myList")[0]
+  var input = document.getElementsByClassName("row")[0]
+  insertionPoint.removeChild(input)
+  insertionPoint.removeChild(list)
   insertionPoint.style.width = "660px"
   insertionPoint.style.height = "660px";
   var map = document.createElement("div")
@@ -337,22 +358,37 @@ function createMap() {
       divpixel.classList.add("divpixels");
       divpixel.classList.add("popup")
 
-      // divpixel.innerHTML = "<img src=\"pulse.gif\" width=\"100px\" height=\"100px\">"
+      // divpixel.innerHTML = "<img src=\"giphy.gif\" width=\"100px\" height=\"100px\">"
 
       map.append(divpixel);
     }, 2 * i)
   }
 
   setTimeout(fillMap1, 2500);
+  setTimeout(changeBorder, 7000)
+
+
+
+
 }
+
+var changeBorder = function () {
+  let array = document.getElementsByClassName("divpixels")
+  for (var i = 0; i < array.length; i++) {
+    let changepixel = array[i]
+    changepixel.style.borderColor = "rgba(255,255,243,0)"
+  }
+
+}
+
 
 let fillMap1 = function(event) {
 
   for (var i = 68; i < 637; i += 30) {
     for (var j = 0; j < 3; j++) {
       var divpixel = document.getElementsByClassName("divpixels")[i + j];
-      divpixel.style.backgroundColor = "violet"
-      divpixel.style.borderColor = "violet"
+      divpixel.style.backgroundColor = 	"rgba(238,130,238,.8)"
+      divpixel.style.borderColor = 	"rgba(238,130,238,.8 )"
     }
   }
   setTimeout(fillMap2, 500)
@@ -363,8 +399,8 @@ let fillMap2 = function(event) {
   for (var i = 84; i < 767; i += 30) {
     for (var j = 0; j < 3; j++) {
       var divpixel = document.getElementsByClassName("divpixels")[i + j];
-      divpixel.style.backgroundColor = "purple"
-      divpixel.style.borderColor = "purple"
+      divpixel.style.backgroundColor = "rgba(128,0,128,.8)"
+      divpixel.style.borderColor = "rgba(128,0,128,.8)"
     }
   }
   setTimeout(fillMap3, 500);
@@ -375,8 +411,8 @@ let fillMap3 = function(event) {
   for (var i = 76; i < 607; i += 30) {
     for (var j = 0; j < 3; j++) {
       var divpixel = document.getElementsByClassName("divpixels")[i + j];
-      divpixel.style.backgroundColor = "crimson"
-      divpixel.style.borderColor = "crimson"
+      divpixel.style.backgroundColor = "rgba(220, 20, 60, .8)"
+      divpixel.style.borderColor = "rgba(220, 20, 60, .8)"
     }
   }
   setTimeout(fillMap4, 500);
@@ -387,8 +423,8 @@ let fillMap4 = function(event) {
   for (var i = 121; i < 727; i += 30) {
     for (var j = 0; j < 3; j++) {
       var divpixel = document.getElementsByClassName("divpixels")[i + j];
-      divpixel.style.backgroundColor = "rebeccapurple"
-      divpixel.style.borderColor = "rebeccapurple"
+      divpixel.style.backgroundColor = "rgba(102,51,153,.8)"
+      divpixel.style.borderColor = "rgba(102,51,153,.8)"
     }
   }
   setTimeout(fillText1, 500);
@@ -400,22 +436,6 @@ let fillText1 = function(event) {
   textbox.append("1B")
   textbox.id = "1B"
   // textbox.addEventListener("click", popupWindow)
-
-  let itemLocation = document.getElementsByClassName("divpixels")[101]
-  itemLocation.addEventListener("mouseover", popupWindow)
-  itemLocation.addEventListener("mouseleave", closeWindow)
-  let imgDiv = document.createElement("div")
-  let image = document.createElement('img')
-  let popupDiv = document.createElement("div")
-  popupDiv.innerHTML = "Hey"
-  popupDiv.classList.add("popuptext")
-  //popupDiv.id = "myPopup"
-  itemLocation.appendChild(popupDiv)
-  image.setAttribute("src", "pulse.gif")
-  imgDiv.append(image)
-  itemLocation.appendChild(imgDiv)
-
-
 
   textbox = document.getElementsByClassName("divpixels")[579]
   textbox.append("1A")
@@ -478,6 +498,39 @@ let fillText4 = function(event) {
   textbox.append('4B')
   textbox.id = "4B"
   // textbox.addEventListener("click", popupWindow)
+  setTimeout(populateMapLocations, 500)
+}
+
+let populateMapLocations = function (event) {
+  let list = Object.keys(localStorage)
+  console.log(list);
+  // let itemType = JSON.parse(localStorage.getItem(list[3][0]))
+  // console.log(itemType);
+  let itemLocation = document.getElementsByClassName("divpixels")[101]
+  // console.log(itemLocation);
+  // let qty =
+  itemLocation.addEventListener("mouseover", popupWindow)
+  itemLocation.addEventListener("mouseleave", closeWindow)
+  let imgDiv = document.createElement("div")
+  let image = document.createElement('img')
+  let popupDiv = document.createElement("div")
+  let popupImg = document.createElement('img')
+  popupImg.classList.add("popup-img")
+  popupImg.setAttribute("src", "eggs.jpg")
+  popupDiv.innerHTML = "Eggs"
+  popupDiv.append(popupImg)
+  popupDiv.classList.add("popuptext")
+  popupDiv.classList.add("tooltip__content")
+  //popupDiv.id = "myPopup"
+  itemLocation.appendChild(popupDiv)
+  image.setAttribute("src", "pulse_dot.gif")
+  imgDiv.append(image)
+  itemLocation.appendChild(imgDiv)
+  for (var i = 0; i < list.length; i++) {
+
+
+  }
+
 }
 
 let closeWindow = function (event) {
