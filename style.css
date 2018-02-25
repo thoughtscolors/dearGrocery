@@ -121,6 +121,10 @@ body {
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
+.btn-popup:hover {
+  background: rgba(0, 225, 0, .2) !important;
+}
+
 button:hover {
   opacity: .7;
 }

@@ -673,6 +673,8 @@ let populateMapLocations = function(event) {
             let button = document.createElement("button")
             button.classList.add("btn-popup")
             button.addEventListener("click", removeItem)
+            // button.addEventListener("mouseover", gotIt)
+            // button.addEventListener("mouseleave", showIt)
             button.textContent = itemQty + " " + listArray[j]
             popupDiv.appendChild(button)
           }
@@ -687,8 +689,15 @@ let populateMapLocations = function(event) {
     }
   }
 
-  setTimeout(itemLocations, 1000)
-
+  setTimeout(itemLocations, 700)
+// var currentName;
+//   var gotIt = function(event) {
+//     currentName = event.target.textContent
+//     event.target.textContent = "Got it"
+//   }
+//   var showIt = function(event) {
+//     event.target.textContent = currentName
+//   }
 
   // let itemLocation = document.getElementsByClassName("divpixels")[101]
   // itemLocation.addEventListener("mouseover", popupWindow)
