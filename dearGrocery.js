@@ -20,7 +20,7 @@ var inventory = {
     'cheddar': ['2A', '2.99', 10],
     'swiss': ['2A', '2.99', 10],
     'brie': ['2A', '2.99', 10],
-    'blue': ['2A', '2.99', 10],
+    'bleu cheese': ['2A', '2.99', 10],
     'parmesan': ['2A', '2.99', 10],
     'location': '2A',
     'image': 'cheese.jpg'
@@ -280,29 +280,33 @@ var choice;
 function quantityForm() {
   item = document.querySelector("#search").value
   choice = event.target.innerHTML
-  var insertionPoint = event.target.parentNode
-  var aisle = inventory[item][choice][0]
-  var price = Number(inventory[item][choice][1])
-  var qtyForm = document.createElement("form")
-  var newInput = document.createElement('input');
-  var label = document.createElement('label')
-  var submit = document.createElement('button')
-  var div = document.createElement("div")
-  submit.textContent = "Add"
-  submit.classList.add("btn-primary")
-  submit.classList.add("add")
-  submit.addEventListener("click", addToMyList)
-  label.innerHTML = "Quantity "
-  newInput.setAttribute('type', 'number');
-  newInput.setAttribute("min", "1")
-  newInput.setAttribute("value", "1")
-  newInput.classList.add('quantity')
-  qtyForm.classList.add("list")
-  qtyForm.appendChild(label)
-  qtyForm.appendChild(newInput)
-  qtyForm.appendChild(submit)
-  div.appendChild(qtyForm)
-  insertionPoint.appendChild(div)
+  
+  if (event.target.parentNode.childElementCount === 1) {
+    var insertionPoint = event.target.parentNode
+    var aisle = inventory[item][choice][0]
+    var price = Number(inventory[item][choice][1])
+    var qtyForm = document.createElement("form")
+    var newInput = document.createElement('input');
+    var label = document.createElement('label')
+    var submit = document.createElement('button')
+    var div = document.createElement("div")
+    submit.textContent = "Add"
+    submit.classList.add("btn-primary")
+    submit.classList.add("add")
+    submit.addEventListener("click", addToMyList)
+    label.innerHTML = "Quantity "
+    newInput.setAttribute('type', 'number');
+    newInput.setAttribute("min", "1")
+    newInput.setAttribute("value", "1")
+    newInput.classList.add('quantity')
+    qtyForm.classList.add("list")
+    qtyForm.appendChild(label)
+    qtyForm.appendChild(newInput)
+    qtyForm.appendChild(submit)
+    div.appendChild(qtyForm)
+    insertionPoint.appendChild(div)
+  }
+
 }
 
 
@@ -685,7 +689,7 @@ let populateMapLocations = function(event) {
     }
   }
 
-  setTimeout(itemLocations, 500)
+  setTimeout(itemLocations, 1000)
 
 
   // let itemLocation = document.getElementsByClassName("divpixels")[101]
