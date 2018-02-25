@@ -418,7 +418,7 @@ function addToMyList(event) {
     insertionPoint.appendChild(div)
   }
 
-
+event.target.parentNode.remove()
 }
 
 

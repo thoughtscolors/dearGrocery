@@ -155,7 +155,7 @@ input {
 
 .myList {
   width: 25%;
-  height: 95%;
+  min-height: 90%
   text-align: center;
   display: absolute;
   position: 0, 0;
@@ -168,6 +168,7 @@ input {
   padding: 2% 0 2% 0;
   margin-bottom: 400px;
   /* border: 1px solid grey; */
+  display: table;
 }
 
 .add {
