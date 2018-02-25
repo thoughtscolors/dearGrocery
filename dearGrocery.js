@@ -280,7 +280,7 @@ var choice;
 function quantityForm() {
   item = document.querySelector("#search").value
   choice = event.target.innerHTML
-  
+
   if (event.target.parentNode.childElementCount === 1) {
     var insertionPoint = event.target.parentNode
     var aisle = inventory[item][choice][0]
@@ -404,16 +404,20 @@ function addToMyList(event) {
   } else {
     listItem = choice
   }
-  itemButton.textContent = listItem
-  var removeButton = document.createElement("button")
-  removeButton.classList.add("remove")
-  removeButton.classList.add("btn-primary")
-  removeButton.textContent = "X"
-  removeButton.id = choice
-  removeButton.addEventListener("click", removeItem)
-  div.append(itemButton)
-  div.append(removeButton)
-  insertionPoint.appendChild(div)
+
+  if (!document.getElementById(choice)) {
+    itemButton.textContent = listItem
+    var removeButton = document.createElement("button")
+    removeButton.classList.add("remove")
+    removeButton.classList.add("btn-primary")
+    removeButton.textContent = "X"
+    removeButton.id = choice
+    removeButton.addEventListener("click", removeItem)
+    div.append(itemButton)
+    div.append(removeButton)
+    insertionPoint.appendChild(div)
+  }
+
 
 }
 
