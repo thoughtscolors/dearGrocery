@@ -619,22 +619,34 @@ let populateMapLocations = function(event) {
   imgDiv.append(image)
   yourLocation.appendChild(imgDiv)
 
-  var removeItem = function(event) {
+  var removePopupItem = function(event) {
+    var item = event.target.id
+    var choice = event.target.classList[1]
+    console.log(item, choice, "clicked")
+    let values = JSON.parse(localStorage.getItem(item))
+    console.log(values, "values gotten");
+    delete values[choice]
+    console.log(values, "values modified");
+    if (Object.keys(values).length === 0) {
+      localStorage.removeItem(item)
+      console.log("object is empty removing value");
+    } else {
+      localStorage.setItem(item, JSON.stringify(values))
+    }
     event.target.remove()
-    // var choice = clicked.id
-    // var item = $(this).siblings(clicked)[0].id
-    // console.log(item, choice, "clicked")
-    // let values = JSON.parse(localStorage.getItem(item))
-    // console.log(values, "values gotten");
-    // delete values[choice]
-    // console.log(values, "values modified");
-    // if (Object.keys(values).length === 0) {
-    //   localStorage.removeItem(item)
-    //   console.log("object is empty removing value");
-    // } else {
-    //   localStorage.setItem(item, JSON.stringify(values))
-    // }
-    // console.log(localStorage, "localStorage updated");
+    if(localStorage.length === 1) {
+      complete()
+    }
+    console.log(localStorage, "localStorage updated");
+  }
+
+  function complete() {
+    document.getElementById("title").textContent = "Shopping Complete!"
+    document.getElementById("map").remove()
+    let insertionPoint = document.getElementById("title")
+    for (var i = 0; i < 35; i++) {
+      insertionPoint.append(" Shopping Complete!")
+    }
   }
 
   var itemLocations = function() {
@@ -672,7 +684,9 @@ let populateMapLocations = function(event) {
             console.log(itemQty);
             let button = document.createElement("button")
             button.classList.add("btn-popup")
-            button.addEventListener("click", removeItem)
+            button.addEventListener("click", removePopupItem)
+            button.id = key
+            button.classList.add(listArray[j])
             // button.addEventListener("mouseover", gotIt)
             // button.addEventListener("mouseleave", showIt)
             button.textContent = itemQty + " " + listArray[j]
