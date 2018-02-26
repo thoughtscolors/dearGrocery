@@ -5,7 +5,7 @@ var inventory = {
     'half-dozen': ['1A', '2.69', 4],
     'eighteen': ['1A', '6.99', 2],
     'location': '1A',
-    'image': 'eggs.jpg'
+    'image': 'images/eggs.jpg'
   },
 
   'milk': {
@@ -13,7 +13,7 @@ var inventory = {
     'half-gallon': ['1B', '1.59', 5],
     'pint': ['1B', '.79', 5],
     'location': '1B',
-    'image': 'milk.jpg'
+    'image': 'images/milk.jpg'
   },
 
   'cheese': {
@@ -23,7 +23,7 @@ var inventory = {
     'bleu cheese': ['2A', '2.99', 10],
     'parmesan': ['2A', '2.99', 10],
     'location': '2A',
-    'image': 'cheese.jpg'
+    'image': 'images/cheese.jpg'
   },
 
   'bread': {
@@ -32,7 +32,7 @@ var inventory = {
     'french': ['2B', '3.49', 7],
     'sourdough': ['2B', '3.49', 7],
     'location': '2B',
-    'image': 'bread.jpeg'
+    'image': 'images/bread.jpeg'
   },
 
   'meat': {
@@ -43,7 +43,7 @@ var inventory = {
     'bacon': ['2C', '7.99', 4],
     'chicken': ['2C', '7.99', 4],
     'location': '2C',
-    'image': "meat.jpg"
+    'image': "images/meat.jpg"
   },
 
   'seafood': {
@@ -52,7 +52,7 @@ var inventory = {
     'shrimp': ['2D', '7.99', 4],
     'oyster': ['2D', '7.99', 4],
     'location': '2D',
-    'image': 'seafood.jpg'
+    'image': 'images/seafood.jpg'
   },
 
   'vegetables': {
@@ -64,7 +64,7 @@ var inventory = {
     'spinach': ['3A', '2.79', 5],
     'mushrooms': ['3A', '2.79', 5],
     'location': '3A',
-    'image': 'vegetables.jpg'
+    'image': 'images/vegetables.jpg'
   },
 
   'fruit': {
@@ -77,7 +77,7 @@ var inventory = {
     'raspberries': ['3B', '1.49', 5],
     'blueberries': ['3B', '1.49', 5],
     'location': '3B',
-    'image': 'fruit.jpg'
+    'image': 'images/fruit.jpg'
   },
 
   'herbs': {
@@ -88,7 +88,7 @@ var inventory = {
     'dill': ['3C', '1.09', 0],
     'parsley': ['3C', '1.09', 0],
     'location': '3C',
-    'image': 'herbs.jpg'
+    'image': 'images/herbs.jpg'
   },
 
   'bulk': {
@@ -98,7 +98,7 @@ var inventory = {
     'rice': ['4A', '.49', 25],
     'chocolate chips': ['4A', '.49', 25],
     'location': '4A',
-    'image': 'bulk.jpg'
+    'image': 'images/bulk.jpg'
   },
 
   'candy': {
@@ -109,7 +109,7 @@ var inventory = {
     'decadence decadence': ['4B', '3.99', 17],
     'kinder bueno': ['4B', '3.99', 17],
     'location': '4B',
-    'image': 'candy.jpg'
+    'image': 'images/candy.jpg'
   }
 };
 
@@ -610,18 +610,18 @@ let populateMapLocations = function(event) {
   let popupDiv = document.createElement("div")
   let popupImg = document.createElement('img')
   popupDiv.classList.add("popupyou")
-  popupImg.setAttribute("src", "you.png")
+  popupImg.setAttribute("src", "images/you.png")
   popupDiv.innerHTML = "You Are Here"
   popupDiv.appendChild(popupImg)
   //popupDiv.id = "myPopup"
   yourLocation.appendChild(popupDiv)
-  image.setAttribute("src", "pulse_dot.gif")
+  image.setAttribute("src", "images/pulse_dot.gif")
   imgDiv.append(image)
   yourLocation.appendChild(imgDiv)
 
   var removePopupItem = function(event) {
     var item = event.target.id
-    var choice = event.target.classList[1]
+    var choice = event.target.name
     console.log(item, choice, "clicked")
     let values = JSON.parse(localStorage.getItem(item))
     console.log(values, "values gotten");
@@ -686,13 +686,13 @@ let populateMapLocations = function(event) {
             button.classList.add("btn-popup")
             button.addEventListener("click", removePopupItem)
             button.id = key
-            button.classList.add(listArray[j])
+            button.setAttribute("name", listArray[j])
             // button.addEventListener("mouseover", gotIt)
             // button.addEventListener("mouseleave", showIt)
             button.textContent = itemQty + " " + listArray[j]
             popupDiv.appendChild(button)
           }
-          image.setAttribute("src", "pulse_dot.gif")
+          image.setAttribute("src", "images/pulse_dot.gif")
           imgDiv.append(image)
           insertionPoint.append(popupDiv)
           insertionPoint.appendChild(imgDiv)

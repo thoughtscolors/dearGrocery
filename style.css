@@ -43,7 +43,7 @@ body {
   font-size: 1.3em;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   color: rgba(255, 255, 243, .9);
-  background-image: url("straw.jpeg");
+  background-image: url("images/straw.jpeg");
   background-size: cover;
   /* scroll-snap-destination: 0 10%; */
   /* -webkit-scroll-snap-coordinate: 0% 10%; */
