@@ -1,0 +1,23 @@
+{
+  "name": "deargrocery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dearGrocery.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thoughtscolors/dearGrocery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thoughtscolors/dearGrocery/issues"
+  },
+  "homepage": "https://github.com/thoughtscolors/dearGrocery#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1"
+  }
+}
