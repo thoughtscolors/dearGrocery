@@ -20,9 +20,10 @@ the user to checkout through the app.
 Many more features, style, and functionality to add later. (And some minor bugs to work out)
 
 Basic order of use:
-1. Login
-2. Add to list (Search)
-3. Edit list (change quantity, remove item)
-3. Populate map with item locations
-4. Remove items from list as user moves through store
-5. Complete shopping and checkout.
+1. Login (enter name)
+2. Add to list (Search Categories: eggs, milk, cheese, bread, meat, seafood, vegetables, fruit, herbs, bulk, candy)
+3. Edit list (add quantity by clicking on list item, remove item by clicking red X box)
+4. Click 'Done' to populate map with item locations
+5. Hover on pulsing dots to see items on your list at that location
+5. While hovering on pulsing dot, remove items from list by clicking item button that will turn green on hover.
+6. Shopping is complete when the items are all removed from users list.
